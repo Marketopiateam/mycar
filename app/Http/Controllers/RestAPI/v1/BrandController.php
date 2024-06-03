@@ -79,10 +79,6 @@ class BrandController extends Controller
     // }
     public function get_search(Request $request)
     {
-
-
-
-
             // products search
             $products = Product::active()->with(['rating','tags'])
                 ->when($request->has('brand_id') , function($query) use($request){
@@ -96,7 +92,6 @@ class BrandController extends Controller
                 }) ;
 
             $products = $products->paginate(20, ['*'], 'page', 1);
- 
             return [
                 'total_size' => $products->total(),
                 'limit' => 20,
