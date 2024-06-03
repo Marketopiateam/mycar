@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\RestAPI\v3;
+namespace App\Http\Controllers\RestAPI\v3\seller;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
