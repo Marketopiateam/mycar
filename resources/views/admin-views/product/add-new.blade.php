@@ -123,7 +123,30 @@
                                 </div>
                             </div>
                         @endif
-
+                        <div class="col-md-6 col-lg-4 col-xl-3">
+                            <div class="form-group">
+                                <label class="title-color">{{ translate('modal') }}</label>
+                                <select class="js-select2-custom form-control" name="modal_id" required>
+                                    <option value="{{ null }}" selected
+                                            disabled>{{ translate('modal') }}</option>
+                                    @foreach ($brands as $brand)
+                                        <option value="{{ $brand['id'] }}">{{ $brand['defaultName'] }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4 col-xl-3">
+                            <div class="form-group">
+                                <label class="title-color">{{ translate('motor') }}</label>
+                                <select class="js-select2-custom form-control" name="motor_id" required>
+                                    <option value="{{ null }}" selected
+                                            disabled>{{ translate('motor') }}</option>
+                                    @foreach ($brands as $brand)
+                                        <option value="{{ $brand['id'] }}">{{ $brand['defaultName'] }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
                         <div class="col-md-6 col-lg-4 col-xl-3">
                             <div class="form-group">
                                 <label class="title-color">{{ translate('product_type') }}</label>
