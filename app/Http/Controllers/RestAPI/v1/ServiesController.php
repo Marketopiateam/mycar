@@ -12,6 +12,7 @@ use App\Models\ServiceCar;
 use App\Utils\BrandManager;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\BookingService;
 use App\Models\Services;
 
 class ServiesController extends Controller
@@ -42,7 +43,7 @@ class ServiesController extends Controller
             $data['phone']= $request->phone;
 
         try {
-            $booking_servies =  Services::create($data);
+            $booking_servies =  BookingService::create($data);
 
         } catch (\Exception $e) {
             return response()->json(['errors' => $e], 403);
