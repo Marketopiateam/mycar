@@ -49,6 +49,6 @@ class ServiesController extends Controller
             return response()->json(['errors' => $e], 403);
         }
 
-        return response()->json($booking_servies,200);
+        return response()->json(['msg'=>'Success'],200);
     }
 }
