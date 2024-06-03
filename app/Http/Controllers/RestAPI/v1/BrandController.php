@@ -42,7 +42,7 @@ class BrandController extends Controller
 
         return response()->json($products,200);
     }
-    
+
      public function get_motor_car(Request $request)
     {
         $motorcars =  motorcar::where('modelcar_id', $request->model_id)->get();
@@ -65,5 +65,15 @@ class BrandController extends Controller
     {
         $city =  City::get();
         return response()->json($city, 200);
+    }
+    public function get_search(Request $request)
+    {
+        try {
+            $products = BrandManager::get_productsbymodelandmotor( $request);
+        } catch (\Exception $e) {
+            return response()->json(['errors' => $e], 403);
+        }
+
+        return response()->json($products,200);
     }
 }
