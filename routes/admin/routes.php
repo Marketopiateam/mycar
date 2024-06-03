@@ -277,7 +277,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['admin']],
         });
     });
     Route::group(['prefix' => 'models', 'as' => 'models.'], function () {
-        Route::resource('models', CarModelController::class);(BrandController::class);
+        Route::resource('models', CarModelController::class);
     });
     // Category
     Route::group(['prefix' => 'category', 'as' => 'category.','middleware'=>['module:product_management']], function () {
