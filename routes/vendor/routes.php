@@ -318,7 +318,7 @@ Route::group(['prefix' => 'vendor', 'as' => 'vendor.'], function () {
                 Route::get('order-report-pdf', 'exportOrderReportInPDF')->name('order-report-pdf');
             });
 
-            Route::any('set-date', 'App\Http\Controllers\Vendor\ReportController@set_date')->name('set-date');
+            // Route::any('set-date', 'App\Http\Controllers\Vendor\ReportController@set_date')->name('set-date');
         });
 
         Route::group(['prefix' => 'transaction', 'as' => 'transaction.'], function () {
