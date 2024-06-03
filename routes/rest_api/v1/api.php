@@ -108,6 +108,13 @@ Route::group(['namespace' => 'RestAPI\v1', 'prefix' => 'v1', 'middleware' => ['a
         Route::get('/servies_car', 'BrandController@get_servies_car');
         Route::get('/city', 'BrandController@get_city');
     });
+    Route::group(['prefix' => 'servies'], function () {
+
+        //update
+        Route::get('/', 'ServiesController@get_servies');
+        Route::post('/booking', 'ServiesController@booking_servies');
+
+    });
 
     Route::group(['middleware' => 'apiGuestCheck'], function () {
         Route::group(['prefix' => 'products'], function () {
