@@ -118,8 +118,8 @@ class ProductController extends BaseController
         $subCategory = $this->categoryRepo->getFirstWhere(params: ['id' => $request['sub_category_id']]);
         $subSubCategory = $this->categoryRepo->getFirstWhere(params: ['id' => $request['sub_sub_category_id']]);
 
-        // return view(Product::LIST[VIEW], compact('products', 'sellers', 'brands',
-        //     'categories', 'subCategory', 'subSubCategory', 'filters', 'type'));
+        return view(Product::LIST[VIEW], compact('products', 'sellers', 'brands',
+            'categories', 'subCategory', 'subSubCategory', 'filters', 'type'));
     }
 
     public function getUpdateView(string|int $id): View
@@ -157,28 +157,28 @@ class ProductController extends BaseController
 
     public function getView(string $addedBy,string|int $id): View
     {
-        $productActive = $this->productRepo->getFirstWhereActive(params: ['id' => $id]);
+        // $productActive = $this->productRepo->getFirstWhereActive(params: ['id' => $id]);
 
-        $relations = ['category', 'brand', 'reviews', 'rating', 'orderDetails', 'orderDelivered','translations'];
-        $product = $this->productRepo->getFirstWhereWithoutGlobalScope(params: ['id' => $id], relations: $relations);
+        // $relations = ['category', 'brand', 'reviews', 'rating', 'orderDetails', 'orderDelivered','translations'];
+        // $product = $this->productRepo->getFirstWhereWithoutGlobalScope(params: ['id' => $id], relations: $relations);
 
-        $product->orderDelivered->map(function ($order) use ($product) {
-            $product->priceSum = $order->sum('price');
-            $product->qtySum = $order->sum('qty');
-            $product->discountSum = $order->sum('discount');
-        });
+        // $product->orderDelivered->map(function ($order) use ($product) {
+        //     $product->priceSum = $order->sum('price');
+        //     $product->qtySum = $order->sum('qty');
+        //     $product->discountSum = $order->sum('discount');
+        // });
 
-        $productColors = [];
-        $colors = json_decode($product['colors']);
-        foreach ($colors as $color) {
-            $getColor = $this->colorRepo->getFirstWhere(params: ['code' => $color]);
-            if ($getColor) {
-                $productColors[$getColor['name']] = $colors;
-            }
-        }
+        // $productColors = [];
+        // $colors = json_decode($product['colors']);
+        // foreach ($colors as $color) {
+        //     $getColor = $this->colorRepo->getFirstWhere(params: ['code' => $color]);
+        //     if ($getColor) {
+        //         $productColors[$getColor['name']] = $colors;
+        //     }
+        // }
 
-        $reviews = $this->reviewRepo->getListWhere(filters: ['product_id' => ['product_id' => $id], 'whereNull' => ['column' => 'delivery_man_id']], dataLimit: getWebConfig(name: 'pagination_limit'));
-        return view(Product::VIEW[VIEW], compact('product', 'reviews', 'productActive', 'productColors','addedBy'));
+        // $reviews = $this->reviewRepo->getListWhere(filters: ['product_id' => ['product_id' => $id], 'whereNull' => ['column' => 'delivery_man_id']], dataLimit: getWebConfig(name: 'pagination_limit'));
+        // return view(Product::VIEW[VIEW], compact('product', 'reviews', 'productActive', 'productColors','addedBy'));
     }
 
     public function getSkuCombinationView(Request $request, ProductService $service): JsonResponse
