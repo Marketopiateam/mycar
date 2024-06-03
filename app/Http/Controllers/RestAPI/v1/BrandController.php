@@ -76,4 +76,23 @@ class BrandController extends Controller
 
         return response()->json($products,200);
     }
+    public function filter_servies(Request $request)
+    {
+        $data = [];
+        if ($request->has('brand_id')) {
+            $data['brand_id'] = $request->input('brand_id');
+        }
+        if ($request->has('city_id')) {
+            $data['city_id'] = $request->input('city_id');
+        }
+
+        try {
+            $servies_car =  ServiceCar::with(['city','brand'])->where($data)->get();
+
+        } catch (\Exception $e) {
+            return response()->json(['errors' => $e], 403);
+        }
+
+        return response()->json($servies_car,200);
+    }
 }

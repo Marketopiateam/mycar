@@ -104,6 +104,7 @@ Route::group(['namespace' => 'RestAPI\v1', 'prefix' => 'v1', 'middleware' => ['a
         Route::get('/model', 'BrandController@get_model_car');
         Route::get('/motor', 'BrandController@get_motor_car');
         Route::get('/filter/search', 'BrandController@get_search');
+        Route::get('/filter/servies', 'BrandController@filter_servies');
         Route::get('/servies_car', 'BrandController@get_servies_car');
         Route::get('/city', 'BrandController@get_city');
     });
