@@ -118,8 +118,8 @@ class ProductController extends BaseController
         $subCategory = $this->categoryRepo->getFirstWhere(params: ['id' => $request['sub_category_id']]);
         $subSubCategory = $this->categoryRepo->getFirstWhere(params: ['id' => $request['sub_sub_category_id']]);
 
-        return view(Product::LIST[VIEW], compact('products', 'sellers', 'brands',
-            'categories', 'subCategory', 'subSubCategory', 'filters', 'type'));
+        // return view(Product::LIST[VIEW], compact('products', 'sellers', 'brands',
+        //     'categories', 'subCategory', 'subSubCategory', 'filters', 'type'));
     }
 
     public function getUpdateView(string|int $id): View
@@ -178,7 +178,7 @@ class ProductController extends BaseController
         }
 
         $reviews = $this->reviewRepo->getListWhere(filters: ['product_id' => ['product_id' => $id], 'whereNull' => ['column' => 'delivery_man_id']], dataLimit: getWebConfig(name: 'pagination_limit'));
-        // return view(Product::VIEW[VIEW], compact('product', 'reviews', 'productActive', 'productColors','addedBy'));
+        return view(Product::VIEW[VIEW], compact('product', 'reviews', 'productActive', 'productColors','addedBy'));
     }
 
     public function getSkuCombinationView(Request $request, ProductService $service): JsonResponse
