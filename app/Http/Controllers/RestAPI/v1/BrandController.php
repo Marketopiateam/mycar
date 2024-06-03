@@ -11,6 +11,7 @@ use App\Models\motorcar;
 use App\Models\ServiceCar;
 use App\Utils\BrandManager;
 use Illuminate\Http\Request;
+use App\Utils\Helpers;
 
 class BrandController extends Controller
 {
@@ -66,8 +67,45 @@ class BrandController extends Controller
         $city =  City::get();
         return response()->json($city, 200);
     }
+    // public function get_search(Request $request)
+    // {
+    //     try {
+            // $products = BrandManager::get_productsbymodelandmotor( $request);
+    //     } catch (\Exception $e) {
+    //         return response()->json(['errors' => $e], 403);
+    //     }
+
+    //     return response()->json($products,200);
+    // }
     public function get_search(Request $request)
     {
+
+
+
+
+            // products search
+            $products = Product::active()->with(['rating','tags'])
+
+
+                ->when($request->has('brand') , function($query) use($request){
+                    return $query->where('brand_id', $request->brand_id);
+                })
+                ->when($request->has('motor_id') , function($query) use($request){
+                    return $query->where('motor_id', $request->motor_id);
+                })
+                ->when($request->has('model_id') , function($query) use($request){
+                    return $query->where('model_id', $request->model_id);
+                }) ;
+
+            $products = $products->paginate(20, ['*'], 'page', 1);
+
+            return [
+                'total_size' => $products->total(),
+                'limit' => 20,
+                'offset' => 1,
+                'products' => Helpers::product_data_formatting($products->items(),true)
+            ];
+
         try {
             $products = BrandManager::get_productsbymodelandmotor( $request);
         } catch (\Exception $e) {
