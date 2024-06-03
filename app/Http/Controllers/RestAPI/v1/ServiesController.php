@@ -34,8 +34,18 @@ class ServiesController extends Controller
     public function booking_servies(Request $request)
     {
 
+        $data=[];
+
+            $data=['service_id'=>$request->service_id];
+
+            $data=['name'=> $request->name];
+
+            $data=['body'=>$request->body];
+
+            $data=['phone'=> $request->phone];
+            
         try {
-            $booking_servies =  Services::create([])->get();
+            $booking_servies =  Services::create($data);
 
         } catch (\Exception $e) {
             return response()->json(['errors' => $e], 403);
