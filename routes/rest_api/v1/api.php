@@ -100,11 +100,11 @@ Route::group(['namespace' => 'RestAPI\v1', 'prefix' => 'v1', 'middleware' => ['a
     });
 
         Route::group(['prefix' => 'brands'], function () {
- 
+
         //update
         Route::get('/model', 'BrandController@get_model_car');
         Route::get('/motor', 'BrandController@get_motor_car');
-        Route::get('/search', 'BrandController@get_search');
+        Route::get('/filter/search', 'BrandController@get_search');
         Route::get('/servies_car', 'BrandController@get_servies_car');
         Route::get('/city', 'BrandController@get_city');
     });
@@ -144,7 +144,7 @@ Route::group(['namespace' => 'RestAPI\v1', 'prefix' => 'v1', 'middleware' => ['a
         Route::group(['prefix' => 'brands'], function () {
             Route::get('/', 'BrandController@get_brands');
             Route::get('products/{brand_id}', 'BrandController@get_products');
-            
+
         });
 
         Route::group(['prefix' => 'customer'], function () {
