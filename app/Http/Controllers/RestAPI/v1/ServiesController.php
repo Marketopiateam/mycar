@@ -36,13 +36,10 @@ class ServiesController extends Controller
 
         $data=[];
 
-            $data=['service_id'=>$request->service_id];
-
-            $data=['name'=> $request->name];
-
-            $data=['body'=>$request->body];
-
-            $data=['phone'=> $request->phone];
+            $data['service_id']=$request->service_id;
+            $data['name']= $request->name ;
+            $data['body']=$request->body;
+            $data['phone']= $request->phone;
 
         try {
             $booking_servies =  Services::create($data);
