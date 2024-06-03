@@ -396,8 +396,8 @@ if (!$is_published) {
 
         //Pay Fast
         Route::group(['prefix' => 'payfast', 'as' => 'payfast.'], function () {
-            Route::get('pay', [PayFastController::class, 'payment'])->name('payment');
-            Route::any('callback', [PayFastController::class, 'callback'])->name('callback');
+            // Route::get('pay', [PayFastController::class, 'payment'])->name('payment');
+            // Route::any('callback', [PayFastController::class, 'callback'])->name('callback');
         });
     });
 }
