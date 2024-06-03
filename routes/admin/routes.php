@@ -158,6 +158,7 @@ Route::group(['prefix' => 'login'], function () {
 });
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['admin']], function () {
+    Route::resource('models', CarModelController::class);
 
     Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.'], function () {
         Route::controller(DashboardController::class)->group(function () {
@@ -276,9 +277,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['admin']],
             Route::post(Brand::STATUS[URI], 'updateStatus')->name('status-update');
         });
     });
-    Route::group(['prefix' => 'models', 'as' => 'models.'], function () {
-        Route::resource('models', CarModelController::class);
-    });
+
     // Category
     Route::group(['prefix' => 'category', 'as' => 'category.','middleware'=>['module:product_management']], function () {
         Route::controller(CategoryController::class)->group(function (){
