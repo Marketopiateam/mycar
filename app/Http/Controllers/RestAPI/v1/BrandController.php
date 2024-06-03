@@ -57,8 +57,8 @@ class BrandController extends Controller
 
     public function get_servies_car(Request $request)
     {
-        $modelcar =  ServiceCar::get();
-        return response()->json($modelcar, 200);
+        $servies_car =  ServiceCar::where('city_id',$request->city_id)->get();
+        return response()->json($servies_car, 200);
     }
 
     public function get_city(Request $request)
