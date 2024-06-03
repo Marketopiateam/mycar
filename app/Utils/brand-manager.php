@@ -26,7 +26,7 @@ class BrandManager
 
         return Helpers::product_data_formatting($products, true);
     }
-    public static function get_productsbymodelandmotor($brand_id, $request = null)
+    public static function get_productsbymodelandmotor( $request = null)
     {
         $user = Helpers::get_customer($request);
         $data = [];

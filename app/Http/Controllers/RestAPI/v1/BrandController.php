@@ -68,7 +68,6 @@ class BrandController extends Controller
     }
     public function get_search(Request $request)
     {
-        dd('');
         try {
             $products = BrandManager::get_productsbymodelandmotor( $request);
         } catch (\Exception $e) {
