@@ -319,6 +319,31 @@
                                     </li>
                                 </ul>
                             </li>
+                            <li class="navbar-vertical-aside-has-menu {{Request::is('admin/models*')?'active':''}}">
+                                <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle"
+                                   href="javascript:" title="{{translate('models')}}">
+                                    <i class="tio-star nav-icon"></i>
+                                    <span
+                                        class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">{{translate('models')}}</span>
+                                </a>
+                                <ul class="js-navbar-vertical-aside-submenu nav nav-sub"
+                                    style="display: {{Request::is('admin/models*')?'block':'none'}}">
+                                    <li class="nav-item {{Request::is('admin/models/create') ? 'active':''}}"
+                                        title="{{translate('add_new')}}">
+                                        <a class="nav-link " href="{{route('admin.models.create')}}">
+                                            <span class="tio-circle nav-indicator-icon"></span>
+                                            <span class="text-truncate">{{translate('add_new')}}</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item {{Request::is('admin/models')?'active':''}}"
+                                        title="{{translate('list')}}">
+                                        <a class="nav-link " href="{{route('admin.models.index')}}">
+                                            <span class="tio-circle nav-indicator-icon"></span>
+                                            <span class="text-truncate">{{translate('list')}}</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
                             <li class="navbar-vertical-aside-has-menu {{Request::is('admin/attribute*')?'active':''}}">
                                 <a class="js-navbar-vertical-aside-menu-link nav-link"
                                    href="{{route('admin.attribute.view')}}"

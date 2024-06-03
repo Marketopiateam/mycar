@@ -7857,5 +7857,12 @@
   'notification message...' => 'Notification message...',
   'generate_Sitemap' => 'Generate Sitemap',
   'by_Turning_OFF_Cookie_Settings' => 'By Turning OFF Cookie Settings',
-  'models'  => 'Models'
+  'models' => 'Models',
+  'brand_Update' => 'Brand Update',
+  'model_Setup' => 'Model Setup',
+  'model_Add' => 'Model Add',
+  'model_created_successfully' => 'Model created successfully',
+  'model_Update' => 'Model Update',
+  'model_updated_successfully' => 'Model updated successfully',
+  'model_deleted_successfully' => 'Model deleted successfully',
 );

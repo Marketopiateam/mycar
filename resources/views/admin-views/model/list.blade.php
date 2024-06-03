@@ -36,7 +36,7 @@
                                 <thead class="thead-light thead-50 text-capitalize">
                                 <tr>
                                     <th>#</th>
-                                    <th class="max-width-100px">{{ translate('name') }}</th>
+                                    <th class="text-center">{{ translate('name') }}</th>
                                     <th class="text-center">{{ translate('brand') }}</th>
                                     <th class="text-center"> {{ translate('action') }}</th>
                                 </tr>
@@ -45,30 +45,31 @@
                                 @foreach($models as $model)
                                     <tr>
                                         <td>{{ $model->id}}</td>
-                                       
-                                        <td class="overflow-hidden max-width-100px">
+                                        <td class="overflow-hidden text-center">
+                                            <span data-toggle="tooltip" data-placement="right" title="{{$model->name}}">
+                                                 {{ Str::limit($model->name,20) }}
+                                            </span>
+                                        </td>   
+                                        <td class="overflow-hidden  text-center">
                                             <span data-toggle="tooltip" data-placement="right" title="{{$model->brand->name}}">
                                                  {{ Str::limit($model->brand->name,20) }}
                                             </span>
                                         </td>
-                                        <td class="overflow-hidden max-width-100px">
-                                            <span data-toggle="tooltip" data-placement="right" title="{{$model->name}}">
-                                                 {{ Str::limit($model->name,20) }}
-                                            </span>
-                                        </td>
+                                        
                                       
                                         <td>
                                             <div class="d-flex justify-content-center gap-2">
                                                 <a class="btn btn-outline-info btn-sm square-btn" title="{{ translate('edit') }}"
-                                                    href="{{ route('admin.brand.update', [$brand['id']]) }}">
+                                                    href="{{ route('admin.models.edit', [$model]) }}">
                                                     <i class="tio-edit"></i>
                                                 </a>
-                                                <a class="btn btn-outline-danger btn-sm delete-brand square-btn " title="{{ translate('delete') }}"
-                                                   data-product-count = "{{count($brand?->brandAllProducts)}}"
-                                                   data-text="{{translate('there_were_').count($brand?->brandAllProducts).translate('_products_under_this_brand').'.'.translate('please_update_their_brand_from_the_below_list_before_deleting_this_one').'.'}}"
-                                                   id="{{ $brand['id'] }}">
-                                                    <i class="tio-delete"></i>
-                                                </a>
+                                                <form action="{{ route('admin.models.destroy', $model) }}" method="post">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-outline-danger btn-sm square-btn " title="{{ translate('delete') }}" id="{{ $model->id }}">
+                                                        <i class="tio-delete"></i>
+                                                    </button>
+                                                </form>
                                             </div>
                                         </td>
                                     </tr>
@@ -92,45 +93,7 @@
             </div>
         </div>
     </div>
-    <span id="route-admin-brand-delete" data-url="{{ route('admin.models.destroy') }}"></span>
-    <div class="modal fade" id="select-brand-modal" tabindex="-1" aria-labelledby="toggle-modal" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content shadow-lg">
-                <div class="modal-header border-0 pb-0 d-flex justify-content-end">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i
-                            class="tio-clear"></i></button>
-                </div>
-                <div class="modal-body px-4 px-sm-5 pt-0 pb-sm-5">
-                    <div class="d-flex flex-column align-items-center text-center gap-2 mb-2">
-                        <div
-                            class="toggle-modal-img-box d-flex flex-column justify-content-center align-items-center mb-3 position-relative">
-                            <img src="{{dynamicAsset('public/assets/back-end/img/icons/info.svg')}}" alt="" width="90"/>
-                        </div>
-                        <h5 class="modal-title mb-2 brand-title-message"></h5>
-                    </div>
-                    <form action="{{ route('admin.models.destroy') }}" method="post" class="product-brand-update-form-submit">
-                        @csrf
-                        <input name="id" hidden="">
-                        <div class="gap-2 mb-3">
-                            <label class="title-color"
-                                   for="exampleFormControlSelect1">{{ translate('select_Category') }}
-                                <span class="text-danger">*</span>
-                            </label>
-                            <select name="brand_id" class="form-control js-select2-custom brand-option" required>
-
-                            </select>
-                        </div>
-                        <div class="d-flex justify-content-center gap-3">
-                            <button type="submit" class="btn btn--primary min-w-120">{{translate('update')}}</button>
-                            <button type="button" class="btn btn-danger-light min-w-120"
-                                    data-dismiss="modal">{{ translate('cancel') }}</button>
-                        </div>
-                    </form>
-                </div>
-
-            </div>
-        </div>
-    </div>
+   
 @endsection
 
 @push('script')

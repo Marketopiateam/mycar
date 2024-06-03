@@ -62,6 +62,7 @@ use App\Http\Controllers\Admin\HelpAndSupport\HelpTopicController;
 use App\Http\Controllers\Admin\InhouseProductSaleController;
 use App\Http\Controllers\Admin\Order\RefundController;
 use App\Http\Controllers\Admin\Product\CarModelController;
+use App\Http\Controllers\Admin\Product\MotorCarController;
 use App\Http\Controllers\Admin\ThirdParty\PaymentMethodController;
 use App\Http\Controllers\Admin\Notification\NotificationController;
 use App\Http\Controllers\Admin\Payment\OfflinePaymentMethodController;
@@ -159,6 +160,7 @@ Route::group(['prefix' => 'login'], function () {
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['admin']], function () {
     Route::resource('models', CarModelController::class);
+    Route::resource('motors', MotorCarController::class);
 
     Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.'], function () {
         Route::controller(DashboardController::class)->group(function () {

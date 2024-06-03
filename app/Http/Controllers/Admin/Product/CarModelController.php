@@ -6,12 +6,12 @@ use App\Contracts\Repositories\CarModelRepositoryInterface;
 use App\Contracts\Repositories\ProductRepositoryInterface;
 use App\Contracts\Repositories\TranslationRepositoryInterface;
 use App\Enums\ExportFileNames\Admin\Brand as BrandExport;
-use App\Enums\ViewPaths\Admin\Brand;
+//use App\Enums\ViewPaths\Admin\Brand;
 use App\Exports\BrandListExport;
 use App\Http\Controllers\BaseController;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\BrandAddRequest;
-use App\Http\Requests\Admin\BrandUpdateRequest;
+use App\Http\Requests\StoreModelRequest;
+use App\Models\Brand;
 use App\Models\modelcar;
 use App\Services\BrandService;
 use Brian2694\Toastr\Facades\Toastr;
@@ -36,17 +36,33 @@ class CarModelController extends Controller
 
         return view('admin-views.model.list', compact('models'));
     }
-    public function create(BrandAddRequest $request, modelcar $model): RedirectResponse
+    public function create(modelcar $model)
     {  
-        Toastr::success(translate('brand_added_successfully'));
-        return redirect()->route('admin.brand.list');
+        $brands = Brand::get();
+        return view('admin-views.model.add-new', compact('brands'));
     }
-
-    public function update(BrandUpdateRequest $request, $id, modelcar $model): RedirectResponse
+    public function store(StoreModelRequest $request)
+    {  
+        modelcar::create($request->all());
+        Toastr::success(translate('model_created_successfully'));
+        return redirect()->route('admin.models.index');
+    }
+    public function update(StoreModelRequest $request, modelcar $model): RedirectResponse
     {
-        Toastr::success(translate('brand_updated_successfully'));
-        return redirect()->route('admin.brand.list');
+        $model->update($request->all());
+        Toastr::success(translate('model_updated_successfully'));
+        return redirect()->route('admin.models.index');
     }
-
-
+    public function edit(modelcar $model)
+    {  
+        $brands = Brand::get();
+        return view('admin-views.model.edit', compact('brands', 'model'));
+    }
+    public function destroy(modelcar $model): RedirectResponse
+    {
+        $model->delete();
+        Toastr::success(translate('model_deleted_successfully'));
+        return redirect()->route('admin.models.index');
+    }
+    
 }
