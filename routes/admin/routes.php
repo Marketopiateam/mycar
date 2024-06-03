@@ -61,6 +61,7 @@ use App\Http\Controllers\Admin\EmailTemplatesController;
 use App\Http\Controllers\Admin\HelpAndSupport\HelpTopicController;
 use App\Http\Controllers\Admin\InhouseProductSaleController;
 use App\Http\Controllers\Admin\Order\RefundController;
+use App\Http\Controllers\Admin\Product\CarModelController;
 use App\Http\Controllers\Admin\ThirdParty\PaymentMethodController;
 use App\Http\Controllers\Admin\Notification\NotificationController;
 use App\Http\Controllers\Admin\Payment\OfflinePaymentMethodController;
@@ -275,7 +276,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['admin']],
             Route::post(Brand::STATUS[URI], 'updateStatus')->name('status-update');
         });
     });
-
+    Route::group(['prefix' => 'models', 'as' => 'models.'], function () {
+        Route::resource('models', CarModelController::class);(BrandController::class);
+    });
     // Category
     Route::group(['prefix' => 'category', 'as' => 'category.','middleware'=>['module:product_management']], function () {
         Route::controller(CategoryController::class)->group(function (){

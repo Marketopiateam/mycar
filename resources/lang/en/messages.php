@@ -7857,4 +7857,5 @@
   'notification message...' => 'Notification message...',
   'generate_Sitemap' => 'Generate Sitemap',
   'by_Turning_OFF_Cookie_Settings' => 'By Turning OFF Cookie Settings',
+  'models'  => 'Models'
 );
