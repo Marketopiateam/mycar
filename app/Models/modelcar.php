@@ -8,5 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class modelcar extends Model
 {
     use HasFactory;
-    protected $guarded = [];
+    protected $guarded = ['id'];
+
+    public function brand()  
+    {
+        return $this->belongsTo(Brand::class, 'brand_id');
+    }
 }

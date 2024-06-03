@@ -28,7 +28,13 @@ class CarModelController extends Controller
 {
     public function index(Request $request)
     {
-        return view('admin-views.model.list');
+        $models = modelcar::with('brand');
+        if ($request->searchValue != "") {
+            $models = $models->where('name', 'LIKE', "%".$request->searchValue."%");
+        }
+        $models = $models->paginate(20);
+
+        return view('admin-views.model.list', compact('models'));
     }
     public function create(BrandAddRequest $request, modelcar $model): RedirectResponse
     {  

@@ -79,10 +79,10 @@
                     </div>
                     <div class="table-responsive mt-4">
                         <div class="d-flex justify-content-lg-end">
-                            {{ $brands->links() }}
+                            {{ $models->links() }}
                         </div>
                     </div>
-                    @if(count($brands)==0)
+                    @if(count($models)==0)
                         <div class="text-center p-4">
                             <img class="mb-3 w-160" src="{{ dynamicAsset(path: 'public/assets/back-end/svg/illustrations/sorry.svg') }}" alt="">
                             <p class="mb-0">{{ translate('no_data_to_show') }}</p>
@@ -92,9 +92,7 @@
             </div>
         </div>
     </div>
-    <span id="route-admin-brand-delete" data-url="{{ route('admin.brand.delete') }}"></span>
-    <span id="route-admin-brand-status-update" data-url="{{ route('admin.brand.status-update') }}"></span>
-    <span id="get-brands" data-brands="{{ json_encode($brands) }}"></span>
+    <span id="route-admin-brand-delete" data-url="{{ route('admin.models.destroy') }}"></span>
     <div class="modal fade" id="select-brand-modal" tabindex="-1" aria-labelledby="toggle-modal" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content shadow-lg">
@@ -110,7 +108,7 @@
                         </div>
                         <h5 class="modal-title mb-2 brand-title-message"></h5>
                     </div>
-                    <form action="{{ route('admin.brand.delete') }}" method="post" class="product-brand-update-form-submit">
+                    <form action="{{ route('admin.models.destroy') }}" method="post" class="product-brand-update-form-submit">
                         @csrf
                         <input name="id" hidden="">
                         <div class="gap-2 mb-3">
