@@ -96,7 +96,7 @@ class BrandController extends Controller
                 }) ;
 
             $products = $products->paginate(20, ['*'], 'page', 1);
-dd( $products );
+ 
             return [
                 'total_size' => $products->total(),
                 'limit' => 20,
