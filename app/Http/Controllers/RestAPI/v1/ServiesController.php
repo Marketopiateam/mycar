@@ -43,7 +43,7 @@ class ServiesController extends Controller
             $data=['body'=>$request->body];
 
             $data=['phone'=> $request->phone];
-            
+
         try {
             $booking_servies =  Services::create($data);
 
