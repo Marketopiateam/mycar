@@ -73,8 +73,7 @@ class ProductController extends BaseController
     public function getAddView(): View
     {
         $categories = $this->categoryRepo->getListWhere(filters: ['position' => 0], dataLimit: 'all');
-        // $brands = $this->brandRepo->getListWhere(dataLimit: 'all');
-        // $brands = $this->brandRepo->getListWhere(dataLimit: 'all');
+        $brands = $this->brandRepo->getListWhere(dataLimit: 'all');
         $brandSetting = getWebConfig(name: 'product_brand');
         $digitalProductSetting = getWebConfig(name: 'digital_product');
         $colors = $this->colorRepo->getList(orderBy: ['name' => 'desc'], dataLimit: 'all');
@@ -82,7 +81,7 @@ class ProductController extends BaseController
         $languages = getWebConfig(name: 'pnc_language') ?? null;
         $defaultLanguage = $languages[0];
 
-        return view(Product::ADD[VIEW], compact('categories',  'brandSetting', 'digitalProductSetting', 'colors', 'attributes', 'languages', 'defaultLanguage'));
+        return view(Product::ADD[VIEW], compact('categories', 'brands', 'brandSetting', 'digitalProductSetting', 'colors', 'attributes', 'languages', 'defaultLanguage'));
     }
 
     public function add(ProductAddRequest $request, ProductService $service): JsonResponse|RedirectResponse
