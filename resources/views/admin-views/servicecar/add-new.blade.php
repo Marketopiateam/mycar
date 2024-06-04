@@ -118,13 +118,12 @@
                                             {{ translate('Star') }} :
                                         </label>
                                         <label class="switcher">
-                                            <input type="checkbox" class="switcher_input" id="star-switcher"
-                                                value="{{ old('select_brands') }}" name="star">
+                                            <input type="checkbox" class="switcher_input" id="star-switcher"  name="star">
                                             <span class="switcher_control"></span>
                                         </label>
                                     </div>
                                 </div>
-                  
+
                             </div>
 
                             <div class="d-flex gap-3 justify-content-end">

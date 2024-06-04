@@ -463,24 +463,12 @@
                 <div class="card-body">
                     <div class="row align-items-end">
                         <div class="col-md-6">
-                            <div class="mb-3 d-flex align-items-center gap-2">
-                                <label for="colors" class="title-color mb-0">
-                                    {{ translate('select_colors') }} :
-                                </label>
-                                <label class="switcher">
-                                    <input type="checkbox" class="switcher_input" id="product-color-switcher"
-                                        value="{{ old('colors_active') }}" name="colors_active">
-                                    <span class="switcher_control"></span>
-                                </label>
-                            </div>
-                            <select
-                                class="js-example-basic-multiple js-states js-example-responsive form-control color-var-select"
-                                name="colors[]" multiple="multiple" id="colors-selector" disabled>
-                                @foreach ($colors as $key => $color)
-                                    <option value="{{ $color->code }}">
-                                        {{ $color['name'] }}
-                                    </option>
-                                @endforeach
+                            <label for="choice_attributes" class="title-color">
+                                {{ translate('star') }} :
+                            </label>
+                            <select class="js-example-basic-multiple js-states js-example-responsive form-control"  name="star" id="choice_attributes"  >
+                                    <option value="0">غير معتمد </option>
+                                    <option value="1"> معتمد</option>
                             </select>
                         </div>
 
