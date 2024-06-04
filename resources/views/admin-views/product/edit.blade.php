@@ -118,7 +118,44 @@
                                 </select>
                             </div>
                         </div>
-                        @if($brandSetting)
+                        @if ($brandSetting)
+                        <div class="col-md-6 col-lg-4 col-xl-3">
+
+                            <div class="form-group">
+                                <label class="title-color">{{ translate('brand') }}</label>
+                                <select class="js-select2-custom form-control  action-get-request-onchange"
+                                    name="brand_id" data-url-prefix="{{ url('/admin/products/getmodel?parent_id=') }}"
+                                    data-element-id="modal-select" data-element-type="select" required>
+                                    <option value="{{ null }}" selected disabled>
+                                        {{ translate('select_Brand') }}</option>
+                                    @foreach ($brands as $brand)
+                                        <option value="{{ $brand['id'] }} "  {{ $brand['id']==$product->brand_id ? 'selected' : ''}}>{{ $brand['defaultName'] }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    @endif
+                    <div class="col-md-6 col-lg-4 col-xl-3">
+                        <div class="form-group">
+                            <label for="name" class="title-color">{{ translate('model') }}</label>
+                            <select class="js-select2-custom form-control action-get-request-onchange" name="model_id"
+                                id="modal-select" data-url-prefix="{{ url('/admin/products/getmotor?parent_id=') }}"
+                                data-element-id="motor-select" data-element-type="select">
+                                <option value="{{ null }}" selected disabled>{{ translate('select_Modal') }}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 col-xl-3">
+                        <div class="form-group">
+                            <label for="name" class="title-color">{{ translate('motor') }}</label>
+                            <select class="js-select2-custom form-control " name="motor_id" id="motor-select">
+                                <option value="{{ null }}" selected disabled>{{ translate('select_Motor') }}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                        {{-- @if($brandSetting)
                             <div class="col-md-6 col-lg-4 col-xl-3">
                                 <div class="form-group">
                                     <label class="title-color">{{ translate('brand') }}</label>
@@ -134,7 +171,7 @@
                                     </select>
                                 </div>
                             </div>
-                        @endif
+                        @endif --}}
                         <div class="col-md-6 col-lg-4 col-xl-3">
                             <div class="form-group">
                                 <label class="title-color">{{ translate('product_type') }}</label>
