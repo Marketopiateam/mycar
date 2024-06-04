@@ -120,6 +120,7 @@ class BrandController extends Controller
         if ($request->has('city_id')) {
             $service_car = $service_car->where('city_id', '=', $request->input('city_id'));
         }
+        $service_car = $service_car->get();
         $service_car->transform(function (ServiceCar $ServiceCar) {
             return (new ServiceCarResource($ServiceCar));
         });
