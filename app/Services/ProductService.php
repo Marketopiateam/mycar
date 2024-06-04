@@ -276,9 +276,9 @@ class ProductService
         $dropdown = '<option value="' . 0 . '" disabled selected>---'.translate("Select").'---</option>';
         foreach ($modal as $row) {
             if ($row->id == $request['sub_category']) {
-                $dropdown .= '<option value="' . $row->id . '" selected >' . $row->defaultName . '</option>';
+                $dropdown .= '<option value="' . $row->id . '" selected >' . $row->name . '</option>';
             } else {
-                $dropdown .= '<option value="' . $row->id . '">' . $row->defaultName . '</option>';
+                $dropdown .= '<option value="' . $row->id . '">' . $row->name . '</option>';
             }
         }
 
@@ -289,9 +289,9 @@ class ProductService
         $dropdown = '<option value="' . 0 . '" disabled selected>---'.translate("Select").'---</option>';
         foreach ($Motor as $row) {
             if ($row->id == $request['sub_category']) {
-                $dropdown .= '<option value="' . $row->id . '" selected >' . $row->defaultName . '</option>';
+                $dropdown .= '<option value="' . $row->id . '" selected >' . $row->name . '</option>';
             } else {
-                $dropdown .= '<option value="' . $row->id . '">' . $row->defaultName . '</option>';
+                $dropdown .= '<option value="' . $row->id . '">' . $row->name . '</option>';
             }
         }
 

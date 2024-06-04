@@ -98,8 +98,8 @@ class ProductController extends BaseController
     {
         $categories = $this->categoryRepo->getListWhere(filters: ['position' => 0], dataLimit: 'all');
         $brands = $this->brandRepo->getListWhere(dataLimit: 'all');
-        $brands = $this->brandRepo->getListWhere(dataLimit: 'all');
-        $brands = $this->brandRepo->getListWhere(dataLimit: 'all');
+        // $brands = $this->brandRepo->getListWhere(dataLimit: 'all');
+        // $brands = $this->brandRepo->getListWhere(dataLimit: 'all');
         $brandSetting = getWebConfig(name: 'product_brand');
         $digitalProductSetting = getWebConfig(name: 'digital_product');
         $colors = $this->colorRepo->getList(orderBy: ['name' => 'desc'], dataLimit: 'all');
