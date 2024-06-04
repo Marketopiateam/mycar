@@ -346,7 +346,7 @@
                             </li>
 
 
-                            <li class="navbar-vertical-aside-has-menu {{Request::is('admin/motors*')?'active':''}}">
+                            <li class="navbar-vertical-aside-has-menu {{Request::is('admin/booking-service*')?'active':''}}">
                                 <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle"
                                    href="javascript:" title="{{translate('motors')}}">
                                     <i class="tio-star nav-icon"></i>
@@ -362,6 +362,8 @@
                                             <span class="text-truncate">{{translate('add_new')}}</span>
                                         </a>
                                     </li>
+
+                                    
                                     <li class="nav-item {{Request::is('admin/motors')?'active':''}}"
                                         title="{{translate('list')}}">
                                         <a class="nav-link " href="{{route('admin.motors.index')}}">
@@ -372,6 +374,24 @@
                                 </ul>
                             </li>
 
+                            <li class="navbar-vertical-aside-has-menu {{Request::is('admin/booking-service*')?'active':''}}">
+                                <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle"
+                                   href="javascript:" title="{{translate('booking_service')}}">
+                                    <i class="tio-star nav-icon"></i>
+                                    <span
+                                        class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">{{translate('booking_service')}}</span>
+                                </a>
+                                <ul class="js-navbar-vertical-aside-submenu nav nav-sub"
+                                    style="display: {{Request::is('admin/booking-service*')?'block':'none'}}">
+                                    <li class="nav-item {{Request::is('admin/booking-service')?'active':''}}"
+                                        title="{{translate('list')}}">
+                                        <a class="nav-link " href="{{route('admin.booking-service.index')}}">
+                                            <span class="tio-circle nav-indicator-icon"></span>
+                                            <span class="text-truncate">{{translate('list')}}</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
 
                             <li class="navbar-vertical-aside-has-menu {{Request::is('admin/attribute*')?'active':''}}">
                                 <a class="js-navbar-vertical-aside-menu-link nav-link"
