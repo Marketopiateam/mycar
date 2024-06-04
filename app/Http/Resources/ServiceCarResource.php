@@ -16,17 +16,16 @@ class ServiceCarResource extends JsonResource
     public function toArray(Request $request): array
     {
         $brands = [];
-        if($this->brands != null) {
-  foreach ($this->brands as $id)
-        {
-            $brand = Brand::find($id);
-            $brands[] = [
-                'name' => $brand->name,
-                'image' => $brand->image
-            ];
+        if ($this->brands != null) {
+            foreach ($this->brands as $id) {
+                $brand = Brand::find($id);
+                $brands[] = [
+                    'name' => $brand->name,
+                    'image' => $brand->image
+                ];
+            }
         }
-        }
-      
+
         return [
             'name'  => $this->name,
             'image'     => $this->image,

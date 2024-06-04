@@ -69,16 +69,7 @@ class BrandController extends Controller
         $city =  City::get();
         return response()->json($city, 200);
     }
-    // public function get_search(Request $request)
-    // {
-    //     try {
-            // $products = BrandManager::get_productsbymodelandmotor( $request);
-    //     } catch (\Exception $e) {
-    //         return response()->json(['errors' => $e], 403);
-    //     }
 
-    //     return response()->json($products,200);
-    // }
     public function get_search(Request $request)
     {
             // products search
@@ -111,8 +102,7 @@ class BrandController extends Controller
     }
     public function filter_servies(Request $request)
     {
-       // $data = [];
-
+ 
        $service_car =  ServiceCar::with(['city']);
         if ($request->has('brand_id')) {
             $service_car = $service_car->where('brands', 'LIKE', '%'.$request->input('brand_id').'%');

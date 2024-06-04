@@ -7891,4 +7891,5 @@
   'select_Motor' => 'Select Motor',
   'select_brands' => 'Select brands',
   'Star' => 'Star',
+  'servicecar_deleted_successfully' => 'Servicecar deleted successfully',
 );

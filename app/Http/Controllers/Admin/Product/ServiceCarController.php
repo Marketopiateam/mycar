@@ -46,23 +46,25 @@ class ServiceCarController extends Controller
 
         ServiceCar::create($data);
         Toastr::success(translate('servicecar_created_successfully'));
-        return redirect()->route('admin.servicecar.index');
+        return redirect()->route('admin.service-car.index');
     }
     public function update(StoreModelRequest $request, ServiceCar $model): RedirectResponse
     {
         $model->update($request->all());
         Toastr::success(translate('servicecar_updated_successfully'));
-        return redirect()->route('admin.servicecar.index');
+        return redirect()->route('admin.service-car.index');
     }
-    public function edit(ServiceCar $model)
+    public function edit($id)
     {
-        $brands = ServiceCar::get();
-        return view('admin-views.servicecar.edit', compact('brands', 'model'));
+
+          $model=  ServiceCar::findOrFail($id);
+          $brands=  Brand::get();
+        return view('admin-views.servicecar.edit', compact('model','brands'));
     }
-    public function destroy(ServiceCar $model): RedirectResponse
-    {
+    public function destroy($id)
+    {   $model=  ServiceCar::findOrFail($id);
         $model->delete();
         Toastr::success(translate('servicecar_deleted_successfully'));
-        return redirect()->route('admin.servicecar.index');
+        return redirect()->route('admin.service-car.index');
     }
 }
