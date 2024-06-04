@@ -147,7 +147,7 @@
                                 <label for="name" class="title-color">{{ translate('modal') }}</label>
                                 <select class="js-select2-custom form-control action-get-request-onchange" name="modal_id"
                                         id="modal-select"
-                                        data-url-prefix="{{ url('/admin/products/getmotors?parent_id=') }}"
+                                        data-url-prefix="{{ url('/admin/products/getmotor?parent_id=') }}"
                                         data-element-id="motor-select"
                                         data-element-type="select">
                                     <option value="{{ null }}" selected
