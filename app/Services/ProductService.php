@@ -415,6 +415,8 @@ class ProductService
         $dataArray = [
             'name' => $request['name'][array_search('en', $request['lang'])],
             'code' => $request['code'],
+            'model_id' => $request['model_id'],
+            'motor_id' => $request['motor_id'],
             'product_type' => $request['product_type'],
             'category_ids' => json_encode($this->getCategoriesArray(request: $request)),
             'category_id' => $request['category_id'],

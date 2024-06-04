@@ -63,6 +63,8 @@ class Product extends Model
         'user_id',
         'added_by',
         'name',
+        'model_id',
+        'motor_id',
         'code',
         'slug',
         'category_ids',
