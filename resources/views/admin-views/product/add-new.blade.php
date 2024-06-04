@@ -147,8 +147,8 @@
                                 <label for="name" class="title-color">{{ translate('modal') }}</label>
                                 <select class="js-select2-custom form-control action-get-request-onchange" name="modal_id"
                                         id="modal-select"
-                                        data-url-prefix="{{ url('/admin/products/get-categories?parent_id=') }}"
-                                        data-element-id="sub-sub-category-select"
+                                        data-url-prefix="{{ url('/admin/products/getmotors?parent_id=') }}"
+                                        data-element-id="motor-select"
                                         data-element-type="select">
                                     <option value="{{ null }}" selected
                                             disabled>{{ translate('modal') }}</option>
@@ -158,11 +158,8 @@
                         <div class="col-md-6 col-lg-4 col-xl-3">
                             <div class="form-group">
                                 <label for="name" class="title-color">{{ translate('motor') }}</label>
-                                <select class="js-select2-custom form-control action-get-request-onchange" name="motor_id"
-                                        id="motor-select"
-                                        data-url-prefix="{{ url('/admin/products/get-categories?parent_id=') }}"
-                                        data-element-id="id"
-                                        data-element-type="select">
+                                <select class="js-select2-custom form-control " name="motor_id"
+                                        id="motor-select" >
                                     <option value="{{ null }}" selected
                                             disabled>{{ translate('motor') }}</option>
                                 </select>
