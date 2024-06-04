@@ -113,7 +113,7 @@ class BrandController extends Controller
     {
        // $data = [];
 
-       $service_car =  ServiceCar::with(['city','brand']);
+       $service_car =  ServiceCar::with(['city']);
         if ($request->has('brand_id')) {
             $service_car = $service_car->where('brands', 'LIKE', '%'.$request->input('brand_id').'%');
         }
