@@ -17,11 +17,9 @@ class ServiceCarResource extends JsonResource
     {
         $brands = [];
         if($this->brands != null) {
-            dd($this->brands);
-
-  foreach (json_decode($this->brands) as $id)
+  foreach ($this->brands as $id)
         {
-            $brand = Brand::find($id->id);
+            $brand = Brand::find($id);
             $brands[] = [
                 'name' => $brand->name,
                 'image' => $brand->image
