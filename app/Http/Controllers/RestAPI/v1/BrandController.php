@@ -112,6 +112,7 @@ class BrandController extends Controller
     public function filter_servies(Request $request)
     {
        // $data = [];
+       dd('');
        $service_car =  ServiceCar::with(['city','brand']);
         if ($request->has('brand_id')) {
             $service_car = $service_car->where('brans', 'LIKE', '%'.$request->input('brand_id').'%');
@@ -122,7 +123,7 @@ class BrandController extends Controller
         $service_car->transform(function (ServiceCar $ServiceCar) {
             return (new ServiceCarResource($ServiceCar));
         });
-    
+
 
         return response()->json(new ServiceCarCollection($service_car),200);
     }
