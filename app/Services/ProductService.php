@@ -271,6 +271,32 @@ class ProductService
 
         return $dropdown;
     }
+    public function getModalDropdown(object $request, object $modal): string
+    {
+        $dropdown = '<option value="' . 0 . '" disabled selected>---'.translate("Select").'---</option>';
+        foreach ($modal as $row) {
+            if ($row->id == $request['sub_category']) {
+                $dropdown .= '<option value="' . $row->id . '" selected >' . $row->defaultName . '</option>';
+            } else {
+                $dropdown .= '<option value="' . $row->id . '">' . $row->defaultName . '</option>';
+            }
+        }
+
+        return $dropdown;
+    }
+    public function getMotorDropdown(object $request, object $Motor): string
+    {
+        $dropdown = '<option value="' . 0 . '" disabled selected>---'.translate("Select").'---</option>';
+        foreach ($Motor as $row) {
+            if ($row->id == $request['sub_category']) {
+                $dropdown .= '<option value="' . $row->id . '" selected >' . $row->defaultName . '</option>';
+            } else {
+                $dropdown .= '<option value="' . $row->id . '">' . $row->defaultName . '</option>';
+            }
+        }
+
+        return $dropdown;
+    }
 
     public function deleteImages(object $product): bool
     {

@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::table('products', function (Blueprint $table) {
             $table->integer('model_id')->nullable();
             $table->foreign('model_id')->references('id')->on('modelcars')->cascadeOnDelete()->cascadeOnUpdate();
+            
             $table->integer('motor_id')->nullable();
             $table->foreign('motor_id')->references('id')->on('motorcars')->cascadeOnDelete()->cascadeOnUpdate();
         });

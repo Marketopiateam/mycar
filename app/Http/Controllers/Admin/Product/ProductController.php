@@ -23,6 +23,8 @@ use App\Http\Controllers\BaseController;
 use App\Http\Requests\Admin\ProductDenyRequest;
 use App\Http\Requests\ProductAddRequest;
 use App\Http\Requests\ProductUpdateRequest;
+use App\Models\modelcar;
+use App\Models\motorcar;
 use App\Services\ProductService;
 use App\Traits\FileManagerTrait;
 use Brian2694\Toastr\Facades\Toastr;
@@ -69,10 +71,33 @@ class ProductController extends BaseController
     {
         return $this->getListView(request: $request, type: $type);
     }
+    public function get_model(Request $request,ProductService $service)
+    {
+        $parentId = $request['parent_id'];
+        $modelcar= modelcar::where('modal_id',$parentId)->get();
+        $dropdown = $service->getModalDropdown(request: $request, modal: $modelcar);
+        return response()->json([
+            'select_tag' => $dropdown,
+            'sub_modal' =>   '',
+        ]);
+    }
+
+    public function get_motor(Request $request,ProductService $service)
+    {
+        $parentId = $request['parent_id'];
+        $motorcar= motorcar::where('motor_id',$parentId)->get();
+        $dropdown = $service->getMotorDropdown(request: $request, Motor: $motorcar);
+        return response()->json([
+            'select_tag' => $dropdown,
+            'sub_motor' =>  '',
+        ]);
+    }
 
     public function getAddView(): View
     {
         $categories = $this->categoryRepo->getListWhere(filters: ['position' => 0], dataLimit: 'all');
+        $brands = $this->brandRepo->getListWhere(dataLimit: 'all');
+        $brands = $this->brandRepo->getListWhere(dataLimit: 'all');
         $brands = $this->brandRepo->getListWhere(dataLimit: 'all');
         $brandSetting = getWebConfig(name: 'product_brand');
         $digitalProductSetting = getWebConfig(name: 'digital_product');

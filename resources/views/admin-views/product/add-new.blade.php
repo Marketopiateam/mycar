@@ -111,9 +111,28 @@
                         </div>
                         @if($brandSetting)
                             <div class="col-md-6 col-lg-4 col-xl-3">
-                                <div class="form-group">
+
+                                {{-- <div class="form-group">
                                     <label class="title-color">{{ translate('brand') }}</label>
-                                    <select class="js-select2-custom form-control" name="brand_id" required>
+                                    <select class="js-select2-custom form-control action-get-request-onchange" name="brand_id"
+                                    data-url-prefix="{{ url('/admin/products/getmodel?parent_id=') }}"
+                                    data-element-id="sub-category-select"
+                                    data-element-type="select"
+                                    required>
+                                <option value="{{ old('category_id') }}" selected
+                                        disabled>{{ translate('select_category') }}</option>
+                                @foreach ($categories as $category)
+                                    <option value="{{ $category['id'] }}"
+                                        {{ old('name') == $category['id'] ? 'selected' : '' }}>
+                                        {{ $category['defaultName'] }}
+                                    </option>
+                                @endforeach
+                            </select> --}}
+                                    <select class="js-select2-custom form-control  action-get-request-onchange" name="brand_id"
+                                    data-url-prefix="{{ url('/admin/products/get-model?parent_id=') }}"
+                                    data-element-id="sub-category-select"
+                                    data-element-type="select"
+                                    required>
                                         <option value="{{ null }}" selected
                                                 disabled>{{ translate('select_Brand') }}</option>
                                         @foreach ($brands as $brand)
@@ -125,28 +144,31 @@
                         @endif
                         <div class="col-md-6 col-lg-4 col-xl-3">
                             <div class="form-group">
-                                <label class="title-color">{{ translate('modal') }}</label>
-                                <select class="js-select2-custom form-control" name="modal_id" required>
+                                <label for="name" class="title-color">{{ translate('modal') }}</label>
+                                <select class="js-select2-custom form-control action-get-request-onchange" name="modal_id"
+                                        id="modal-select"
+                                        data-url-prefix="{{ url('/admin/products/get-categories?parent_id=') }}"
+                                        data-element-id="sub-sub-category-select"
+                                        data-element-type="select">
                                     <option value="{{ null }}" selected
                                             disabled>{{ translate('modal') }}</option>
-                                    @foreach ($brands as $brand)
-                                        <option value="{{ $brand['id'] }}">{{ $brand['defaultName'] }}</option>
-                                    @endforeach
                                 </select>
                             </div>
                         </div>
                         <div class="col-md-6 col-lg-4 col-xl-3">
                             <div class="form-group">
-                                <label class="title-color">{{ translate('motor') }}</label>
-                                <select class="js-select2-custom form-control" name="motor_id" required>
+                                <label for="name" class="title-color">{{ translate('motor') }}</label>
+                                <select class="js-select2-custom form-control action-get-request-onchange" name="motor_id"
+                                        id="motor-select"
+                                        data-url-prefix="{{ url('/admin/products/get-categories?parent_id=') }}"
+                                        data-element-id="id"
+                                        data-element-type="select">
                                     <option value="{{ null }}" selected
                                             disabled>{{ translate('motor') }}</option>
-                                    @foreach ($brands as $brand)
-                                        <option value="{{ $brand['id'] }}">{{ $brand['defaultName'] }}</option>
-                                    @endforeach
                                 </select>
                             </div>
                         </div>
+
                         <div class="col-md-6 col-lg-4 col-xl-3">
                             <div class="form-group">
                                 <label class="title-color">{{ translate('product_type') }}</label>
