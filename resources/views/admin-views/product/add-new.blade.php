@@ -129,8 +129,8 @@
                                 @endforeach
                             </select> --}}
                                     <select class="js-select2-custom form-control  action-get-request-onchange" name="brand_id"
-                                    data-url-prefix="{{ url('/admin/products/get-model?parent_id=') }}"
-                                    data-element-id="sub-category-select"
+                                    data-url-prefix="{{ url('/admin/products/getmodel?parent_id=') }}"
+                                    data-element-id="modal-select"
                                     data-element-type="select"
                                     required>
                                         <option value="{{ null }}" selected
