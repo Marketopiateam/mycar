@@ -16,7 +16,8 @@ class ServiceCarResource extends JsonResource
     public function toArray(Request $request): array
     {
         $brands = [];
-        foreach (json_decode($this->brands) as $id)
+        if($this->brands != null) {
+  foreach (json_decode($this->brands) as $id)
         {
             $brand = Brand::find($id->id);
             $brands[] = [
@@ -24,6 +25,8 @@ class ServiceCarResource extends JsonResource
                 'image' => $brand->image
             ];
         }
+        }
+      
         return [
             'name'  => $this->name,
             'image'     => $this->image,
