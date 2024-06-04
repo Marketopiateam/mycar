@@ -216,8 +216,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['admin']],
             Route::post(Product::SKU_COMBINATION[URI], 'getSkuCombinationView')->name('sku-combination');
             Route::post(Product::FEATURED_STATUS[URI], 'updateFeaturedStatus')->name('featured-status');
             Route::get(Product::GET_CATEGORIES[URI], 'getCategories')->name('get-categories');
-            Route::get('getmodel' ,'getmodel')->name('get-model');
-            Route::get('getmotor' ,'getmotor')->name('get-motor');
+            Route::get('getmodel' ,'get_model')->name('get-model');
+            Route::get('getmotor' ,'get_motor')->name('get-motor');
             Route::get(Product::GET_CATEGORIES[URI], 'getCategories')->name('get-categories');
             Route::post(Product::UPDATE_STATUS[URI], 'updateStatus')->name('status-update');
             Route::get(Product::BARCODE_VIEW[URI] . '/{id}', 'getBarcodeView')->name('barcode');

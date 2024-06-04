@@ -73,9 +73,9 @@ class ProductController extends BaseController
     }
     public function get_model(Request $request,ProductService $service)
     {
+       
         $parentId = $request['parent_id'];
         $modelcar= modelcar::where('brand_id',$parentId)->get();
-        dd($modelcar);
         $dropdown = $service->getModalDropdown(request: $request, modal: $modelcar);
         return response()->json([
             'select_tag' => $dropdown,
