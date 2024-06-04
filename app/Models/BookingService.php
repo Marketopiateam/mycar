@@ -9,4 +9,9 @@ class BookingService extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
+    public function service() {
+        return $this->belongsTo(Services::class, 'service_id');
+     
+    }
 }

@@ -7869,4 +7869,13 @@
   'motor_Update' => 'Motor Update',
   'motor_deleted_successfully' => 'Motor deleted successfully',
   'model' => 'Model',
+  'services' => 'Services',
+  'service_Setup' => 'Service Setup',
+  'service_created_successfully' => 'Service created successfully',
+  'service_deleted_successfully' => 'Service deleted successfully',
+  'service_Add' => 'Service Add',
+  'body' => 'Body',
+  'service' => 'Service',
+  'booking_service' => 'Booking service',
+  'booking_details' => 'Booking details',
 );
