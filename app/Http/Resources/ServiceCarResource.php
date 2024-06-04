@@ -17,7 +17,7 @@ class ServiceCarResource extends JsonResource
     {
         $brands = [];
         if($this->brands != null) {
-            dd($this->brands);
+            dd($this->brands == null);
 
   foreach (json_decode($this->brands) as $id)
         {
