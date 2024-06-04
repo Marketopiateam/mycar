@@ -7865,4 +7865,8 @@
   'model_Update' => 'Model Update',
   'model_updated_successfully' => 'Model updated successfully',
   'model_deleted_successfully' => 'Model deleted successfully',
+  'motors' => 'Motors',
+  'motor_Update' => 'Motor Update',
+  'motor_deleted_successfully' => 'Motor deleted successfully',
+  'model' => 'Model',
 );
