@@ -112,9 +112,9 @@
                         @if($brandSetting)
                             <div class="col-md-6 col-lg-4 col-xl-3">
 
-                                {{-- <div class="form-group">
-                                    <label class="title-color">{{ translate('brand') }}</label>
-                                    <select class="js-select2-custom form-control action-get-request-onchange" name="brand_id"
+                               <div class="form-group">
+                                      <label class="title-color">{{ translate('brand') }}</label>
+                                  {{--  <select class="js-select2-custom form-control action-get-request-onchange" name="brand_id"
                                     data-url-prefix="{{ url('/admin/products/getmodel?parent_id=') }}"
                                     data-element-id="sub-category-select"
                                     data-element-type="select"
