@@ -348,7 +348,7 @@ class ProductService
         if ($request['product_type'] == 'digital' && $request['digital_product_type'] == 'ready_product') {
             $digitalFile = $this->fileUpload(dir: 'product/digital-product/', format: $request['digital_file_ready']->getClientOriginalExtension(), file: $request['digital_file_ready']);
         }
-        dd($request);
+      
         return [
             'added_by' => $addedBy,
             'user_id' => $addedBy == 'admin' ? auth('admin')->id() : auth('seller')->id(),
