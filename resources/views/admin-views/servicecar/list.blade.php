@@ -47,7 +47,7 @@
                                         <td>{{ $service->id}}</td>
                                         <td>
                                             <a href="" class="media align-items-center gap-2">
-                                              
+
                                                 <img src="{{ getValidImage(path: 'service_car/image/'.$service['image'], type: 'backend-product') }}"
                                                      class="avatar border" alt="">
                                                 <span class="media-body title-color hover-c1">
@@ -55,25 +55,21 @@
                                             </span>
                                             </a>
                                         </td>
-                                        {{-- <td class="overflow-hidden text-center">
+                                       <td class="overflow-hidden text-center">
                                             <span data-toggle="tooltip" data-placement="right" title="{{$service->name}}">
                                                  {{ Str::limit($service->name,20) }}
                                             </span>
                                         </td>
-                                        <td class="overflow-hidden  text-center">
-                                            <span data-toggle="tooltip" data-placement="right" title="{{$service->model->name}}">
-                                                 {{ Str::limit($service->model->name,20) }}
-                                            </span>
-                                        </td> --}}
 
 
-                                        {{-- <td>
+
+                                        <td>
                                             <div class="d-flex justify-content-center gap-2">
                                                 <a class="btn btn-outline-info btn-sm square-btn" title="{{ translate('edit') }}"
-                                                    href="{{ route('admin.motors.edit', [$model]) }}">
+                                                    href="{{ route('admin.servies_car.edit', [$service]) }}">
                                                     <i class="tio-edit"></i>
                                                 </a>
-                                                <form action="{{ route('admin.motors.destroy', $model) }}" method="post">
+                                                <form action="{{ route('admin.servies_car.destroy', $service) }}" method="post">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-outline-danger btn-sm square-btn " title="{{ translate('delete') }}" id="{{ $model->id }}">
@@ -81,7 +77,7 @@
                                                     </button>
                                                 </form>
                                             </div>
-                                        </td> --}}
+                                        </td>
                                     </tr>
                                 @endforeach
                                 </tbody>

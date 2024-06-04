@@ -33,7 +33,7 @@ class ServiceCarController extends Controller
     }
     public function create(modelcar $model)
     {
-        $brands = Brand::get();
+        $brands = ServiceCar::get();
         return view('admin-views.servicecar.add-new', compact('brands'));
     }
     public function store(Request $request)
@@ -45,24 +45,24 @@ class ServiceCarController extends Controller
         $data['image'] =  $this->upload(dir: 'service_car/image/', format: 'png', image: $request['image']);
 
         ServiceCar::create($data);
-        Toastr::success(translate('model_created_successfully'));
-        return redirect()->route('admin.models.index');
+        Toastr::success(translate('servicecar_created_successfully'));
+        return redirect()->route('admin.servicecar.index');
     }
-    public function update(StoreModelRequest $request, modelcar $model): RedirectResponse
+    public function update(StoreModelRequest $request, ServiceCar $model): RedirectResponse
     {
         $model->update($request->all());
-        Toastr::success(translate('model_updated_successfully'));
-        return redirect()->route('admin.models.index');
+        Toastr::success(translate('servicecar_updated_successfully'));
+        return redirect()->route('admin.servicecar.index');
     }
-    public function edit(modelcar $model)
+    public function edit(ServiceCar $model)
     {
-        $brands = Brand::get();
+        $brands = ServiceCar::get();
         return view('admin-views.servicecar.edit', compact('brands', 'model'));
     }
-    public function destroy(modelcar $model): RedirectResponse
+    public function destroy(ServiceCar $model): RedirectResponse
     {
         $model->delete();
-        Toastr::success(translate('model_deleted_successfully'));
-        return redirect()->route('admin.models.index');
+        Toastr::success(translate('servicecar_deleted_successfully'));
+        return redirect()->route('admin.servicecar.index');
     }
 }
