@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\RestAPI\v1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\ServiceCarCollection;
+use App\Http\Resources\ServiceCarResource;
 use App\Models\City;
 use App\Models\Brand;
 use App\Models\Product;
@@ -109,21 +111,19 @@ class BrandController extends Controller
     }
     public function filter_servies(Request $request)
     {
-        $data = [];
+       // $data = [];
+       $service_car =  ServiceCar::with(['city','brand']);
         if ($request->has('brand_id')) {
-            $data['brand_id'] = $request->input('brand_id');
+            $service_car = $service_car->where('brans', 'LIKE', '%'.$request->input('brand_id').'%');
         }
         if ($request->has('city_id')) {
-            $data['city_id'] = $request->input('city_id');
+            $service_car = $service_car->where('city_id', '=', $request->input('city_id'));
         }
+        $service_car->transform(function (ServiceCar $ServiceCar) {
+            return (new ServiceCarResource($ServiceCar));
+        });
+    
 
-        try {
-            $servies_car =  ServiceCar::with(['city','brand'])->where($data)->get();
-
-        } catch (\Exception $e) {
-            return response()->json(['errors' => $e], 403);
-        }
-
-        return response()->json($servies_car,200);
+        return response()->json(new ServiceCarCollection($service_car),200);
     }
 }
