@@ -16,6 +16,7 @@ class ServiceCarResource extends JsonResource
     public function toArray(Request $request): array
     {
         $brands = [];
+        dd($this->brands);
         if($this->brands != null) {
   foreach (json_decode($this->brands) as $id)
         {
