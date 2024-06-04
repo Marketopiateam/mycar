@@ -354,6 +354,8 @@ class ProductService
             'user_id' => $addedBy == 'admin' ? auth('admin')->id() : auth('seller')->id(),
             'name' => $request['name'][array_search('en', $request['lang'])],
             'code' => $request['code'],
+            'model_id' => $request['model_id'],
+            'motor_id' => $request['motor_id'],
             'slug' => $this->getSlug($request),
             'category_ids' => json_encode($this->getCategoriesArray(request: $request)),
             'category_id' => $request['category_id'],
