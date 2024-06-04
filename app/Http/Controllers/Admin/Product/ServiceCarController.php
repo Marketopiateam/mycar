@@ -28,8 +28,8 @@ class ServiceCarController extends Controller
     use FileManagerTrait;
     public function index(Request $request)
     {
-        $brands = Brand::get();
-        return view('admin-views.servicecar.list', compact('brands'));
+        $servicecar =  ServiceCar::get();
+        return view('admin-views.servicecar.list', compact('servicecar'));
     }
     public function create(modelcar $model)
     {

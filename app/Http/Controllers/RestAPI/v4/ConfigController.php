@@ -127,6 +127,7 @@ class ConfigController extends Controller
             'delivery_zip_code_area_restriction' => getWebConfig(name: 'delivery_zip_code_area_restriction'),
             'base_urls' => [
                 'product_image_url' => ProductManager::product_image_path('product'),
+                'service_car' => dynamicStorage(path: 'storage/app/public/service_car/image'),
                 'product_thumbnail_url' => ProductManager::product_image_path('thumbnail'),
                 'digital_product_url' => dynamicStorage(path: 'storage/app/public/product/digital-product'),
                 'brand_image_url' => dynamicStorage(path: 'storage/app/public/brand'),

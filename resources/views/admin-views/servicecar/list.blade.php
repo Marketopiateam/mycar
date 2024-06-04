@@ -42,22 +42,32 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($motors as $model)
+                                @foreach($servicecar as $service)
                                     <tr>
-                                        <td>{{ $model->id}}</td>
-                                        <td class="overflow-hidden text-center">
-                                            <span data-toggle="tooltip" data-placement="right" title="{{$model->name}}">
-                                                 {{ Str::limit($model->name,20) }}
+                                        <td>{{ $service->id}}</td>
+                                        <td>
+                                            <a href="" class="media align-items-center gap-2">
+                                              
+                                                <img src="{{ getValidImage(path: 'service_car/image/'.$service['image'], type: 'backend-product') }}"
+                                                     class="avatar border" alt="">
+                                                <span class="media-body title-color hover-c1">
+                                                {{ Str::limit($service['name'], 20) }}
                                             </span>
-                                        </td>   
-                                        <td class="overflow-hidden  text-center">
-                                            <span data-toggle="tooltip" data-placement="right" title="{{$model->model->name}}">
-                                                 {{ Str::limit($model->model->name,20) }}
+                                            </a>
+                                        </td>
+                                        {{-- <td class="overflow-hidden text-center">
+                                            <span data-toggle="tooltip" data-placement="right" title="{{$service->name}}">
+                                                 {{ Str::limit($service->name,20) }}
                                             </span>
                                         </td>
-                                        
-                                      
-                                        <td>
+                                        <td class="overflow-hidden  text-center">
+                                            <span data-toggle="tooltip" data-placement="right" title="{{$service->model->name}}">
+                                                 {{ Str::limit($service->model->name,20) }}
+                                            </span>
+                                        </td> --}}
+
+
+                                        {{-- <td>
                                             <div class="d-flex justify-content-center gap-2">
                                                 <a class="btn btn-outline-info btn-sm square-btn" title="{{ translate('edit') }}"
                                                     href="{{ route('admin.motors.edit', [$model]) }}">
@@ -71,7 +81,7 @@
                                                     </button>
                                                 </form>
                                             </div>
-                                        </td>
+                                        </td> --}}
                                     </tr>
                                 @endforeach
                                 </tbody>
@@ -80,20 +90,20 @@
                     </div>
                     <div class="table-responsive mt-4">
                         <div class="d-flex justify-content-lg-end">
-                            {{ $motors->links() }}
+                            {{-- {{ $motors->links() }} --}}
                         </div>
                     </div>
-                    @if(count($motors)==0)
+                    {{-- @if(count($motors)==0)
                         <div class="text-center p-4">
                             <img class="mb-3 w-160" src="{{ dynamicAsset(path: 'public/assets/back-end/svg/illustrations/sorry.svg') }}" alt="">
                             <p class="mb-0">{{ translate('no_data_to_show') }}</p>
                         </div>
-                    @endif
+                    @endif --}}
                 </div>
             </div>
         </div>
     </div>
-   
+
 @endsection
 
 @push('script')

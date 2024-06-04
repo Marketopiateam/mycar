@@ -390,13 +390,13 @@
                                         <span class="text-truncate">{{ translate('servies_new') }}</span>
                                     </a>
                                 </li>
-                                {{-- <li class="nav-item {{ Request::is('admin/service-car') ? 'active' : '' }}"
+                                <li class="nav-item {{ Request::is('admin/service-car') ? 'active' : '' }}"
                                     title="{{ translate('servies_list') }}">
-                                    <a class="nav-link " href="{{ route('admin.motors.index') }}">
+                                    <a class="nav-link " href="{{ route('admin.service-car.index') }}">
                                         <span class="tio-circle nav-indicator-icon"></span>
                                         <span class="text-truncate">{{ translate('servies_list') }}</span>
                                     </a>
-                                </li> --}}
+                                </li>
                             </ul>
                         </li>
 

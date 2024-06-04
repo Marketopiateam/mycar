@@ -28,9 +28,9 @@
                                         <div class="d-flex align-items-center justify-content-between gap-2 mb-3">
                                             <div>
                                                 <label for="name"
-                                                    class="title-color text-capitalize font-weight-bold mb-0">{{ translate('product_thumbnail') }}</label>
-                                                <span
-                                                    class="badge badge-soft-info">{{ THEME_RATIO[theme_root_path()]['Product Image'] }}</span>
+                                                    class="title-color text-capitalize font-weight-bold mb-0">{{ translate('image') }}</label>
+                                                {{-- <span
+                                                    class="badge badge-soft-info">{{ THEME_RATIO[theme_root_path()]['Product Image'] }}</span> --}}
                                                 <span class="input-label-secondary cursor-pointer" data-toggle="tooltip"
                                                     title="{{ translate('add_your_product’s_thumbnail_in') }} JPG, PNG or JPEG {{ translate('format_within') }} 2MB">
                                                     <img src="{{ dynamicAsset(path: 'public/assets/back-end/img/info-circle.svg') }}"
@@ -113,16 +113,15 @@
                                     </select>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="mb-3 d-flex align-items-center gap-2">
-                                        <label for="colors" class="title-color mb-0">
-                                            {{ translate('Star') }} :
-                                        </label>
-                                        <label class="switcher">
-                                            <input type="checkbox" class="switcher_input" id="star-switcher"  name="star">
-                                            <span class="switcher_control"></span>
-                                        </label>
-                                    </div>
+                                    <label for="choice_attributes" class="title-color">
+                                        {{ translate('star') }} :
+                                    </label>
+                                    <select class="js-example-basic-multiple js-states js-example-responsive form-control"  name="star" id="choice_attributes"  >
+                                            <option value="0">غير معتمد </option>
+                                            <option value="1"> معتمد</option>
+                                    </select>
                                 </div>
+
 
                             </div>
 
