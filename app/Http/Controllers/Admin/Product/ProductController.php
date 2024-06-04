@@ -86,7 +86,7 @@ class ProductController extends BaseController
     public function get_motor(Request $request,ProductService $service)
     {
         $parentId = $request['parent_id'];
-        $motorcar= motorcar::where('motor_id',$parentId)->get();
+        $motorcar= motorcar::where('model_id',$parentId)->get();
         $dropdown = $service->getMotorDropdown(request: $request, Motor: $motorcar);
         return response()->json([
             'select_tag' => $dropdown,
