@@ -73,7 +73,7 @@ class ProductController extends BaseController
     }
     public function get_model(Request $request,ProductService $service)
     {
-       
+        dd( $request);
         $parentId = $request['parent_id'];
         $modelcar= modelcar::where('brand_id',$parentId)->get();
         $dropdown = $service->getModalDropdown(request: $request, modal: $modelcar);
@@ -270,6 +270,7 @@ class ProductController extends BaseController
 
     public function getCategories(Request $request, ProductService $service): JsonResponse
     {
+        dd( $request);
         $parentId = $request['parent_id'];
         $filter = ['parent_id' => $parentId];
         $categories = $this->categoryRepo->getListWhere(filters: $filter, dataLimit: 'all');
