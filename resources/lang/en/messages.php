@@ -6,8 +6,9 @@
   'pending' => 'Pending',
   'confirmed' => 'Confirmed',
   'Processing' => 'Processing',
-  'out_for_delivery' => 'Out for delivery',
   'delivered' => 'Delivered',
+  'out_for_delivery' => 'Out for delivery',
+  'serviescar' => 'Service Car',
   'returned' => 'Returned',
   'failed' => 'Failed',
   'canceled' => 'Canceled',
@@ -7869,4 +7870,5 @@
   'motor_Update' => 'Motor Update',
   'motor_deleted_successfully' => 'Motor deleted successfully',
   'model' => 'Model',
+  'serviescar' => 'Serviescar',
 );
