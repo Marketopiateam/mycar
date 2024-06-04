@@ -112,10 +112,10 @@ class BrandController extends Controller
     public function filter_servies(Request $request)
     {
        // $data = [];
-       dd('');
+
        $service_car =  ServiceCar::with(['city','brand']);
         if ($request->has('brand_id')) {
-            $service_car = $service_car->where('brans', 'LIKE', '%'.$request->input('brand_id').'%');
+            $service_car = $service_car->where('brands', 'LIKE', '%'.$request->input('brand_id').'%');
         }
         if ($request->has('city_id')) {
             $service_car = $service_car->where('city_id', '=', $request->input('city_id'));
