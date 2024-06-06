@@ -23,8 +23,11 @@
                                             </div>
                                         </div>
                                         <input id="datatableSearch_" type="search" name="searchValue" class="form-control"
-                                            placeholder="{{ translate('search_by_name') }}" aria-label="{{ translate('search_by_name') }}" value="{{ request('searchValue') }}" required>
-                                        <button type="submit" class="btn btn--primary input-group-text">{{ translate('search') }}</button>
+                                            placeholder="{{ translate('search_by_name') }}"
+                                            aria-label="{{ translate('search_by_name') }}"
+                                            value="{{ request('searchValue') }}" required>
+                                        <button type="submit"
+                                            class="btn btn--primary input-group-text">{{ translate('search') }}</button>
                                     </div>
                                 </form>
                             </div>
@@ -32,48 +35,53 @@
                     </div>
                     <div class="card-body p-0">
                         <div class="table-responsive">
-                            <table class="table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table w-100 text-start">
+                            <table
+                                class="table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table w-100 text-start">
                                 <thead class="thead-light thead-50 text-capitalize">
-                                <tr>
-                                    <th>#</th>
-                                    <th class="text-center">{{ translate('name') }}</th>
-                       
-                                    <th class="text-center"> {{ translate('action') }}</th>
-                                </tr>
+                                    <tr>
+                                        <th>#</th>
+                                        <th class="text-center">{{ translate('name') }}</th>
+
+                                        <th class="text-center"> {{ translate('action') }}</th>
+                                    </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($servicecar as $service)
-                                    <tr>
-                                        <td>{{ $service->id}}</td>
-                                        <td>
-                                            <a href="" class="media align-items-center gap-2">
+                                    @foreach ($servicecar as $service)
+                                        <tr>
+                                            <td>{{ $service->id }}</td>
+                                            <td>
+                                                <a href="" class="media align-items-center gap-2">
 
-                                                <img src="{{ getValidImage(path: 'storage/app/public/service_car/image/'.$service['image'], type: 'backend-product') }}"
-                                                     class="avatar border" alt="">
-                                                <span class="media-body title-color hover-c1">
-                                                {{ Str::limit($service['name'], 20) }}
-                                            </span>
-                                            </a>
-                                        </td>
-
-
-                                        <td>
-                                            <div class="d-flex justify-content-center gap-2">
-                                                <a class="btn btn-outline-info btn-sm square-btn" title="{{ translate('edit') }}"
-                                                    href="{{ route('admin.service-car.edit',  $service->id ) }}">
-                                                    <i class="tio-edit"></i>
+                                                    <img src="{{ getValidImage(path: 'storage/app/public/service_car/image/' . $service['image'], type: 'backend-product') }}"
+                                                        class="avatar border" alt="">
+                                                    <span class="media-body title-color hover-c1">
+                                                        {{ Str::limit($service['name'], 20) }}
+                                                    </span>
                                                 </a>
-                                                <form action="{{ route('admin.service-car.destroy',$service->id) }}" method="post">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-outline-danger btn-sm square-btn " title="{{ translate('delete') }}" id="{{ $service->id }}">
-                                                        <i class="tio-delete"></i>
-                                                    </button>
-                                                </form>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                @endforeach
+                                            </td>
+
+
+                                            <td>
+                                                <div class="d-flex justify-content-center gap-2">
+                                                    <a class="btn btn-outline-info btn-sm square-btn"
+                                                        title="{{ translate('edit') }}"
+                                                        href="{{ route('admin.service-car.edit', $service->id) }}">
+                                                        <i class="tio-edit"></i>
+                                                    </a>
+                                                    <form action="{{ route('admin.service-car.destroy', $service->id) }}"
+                                                        method="post">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit"
+                                                            class="btn btn-outline-danger btn-sm square-btn "
+                                                            title="{{ translate('delete') }}" id="{{ $service->id }}">
+                                                            <i class="tio-delete"></i>
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -83,7 +91,7 @@
                             {{-- {{ $motors->links() }} --}}
                         </div>
                     </div>
-                    {{-- @if(count($motors)==0)
+                    {{-- @if (count($motors) == 0)
                         <div class="text-center p-4">
                             <img class="mb-3 w-160" src="{{ dynamicAsset(path: 'public/assets/back-end/svg/illustrations/sorry.svg') }}" alt="">
                             <p class="mb-0">{{ translate('no_data_to_show') }}</p>

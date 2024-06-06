@@ -7892,4 +7892,9 @@
   'select_brands' => 'Select brands',
   'Star' => 'Star',
   'servicecar_deleted_successfully' => 'Servicecar deleted successfully',
+  'city_id' => 'City id',
+  'city_Id' => 'City Id',
+  'servicecar_created_successfully' => 'Servicecar created successfully',
+  'service_Update' => 'Service Update',
+  'servicecar_updated_successfully' => 'Servicecar updated successfully',
 );

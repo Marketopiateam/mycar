@@ -104,7 +104,7 @@
                                     </label>
                                     <select
                                         class="js-example-basic-multiple js-states js-example-responsive form-control color-var-select"
-                                        name="brands[]" multiple="multiple" id="brands" >
+                                        name="brands[]" multiple="multiple" id="brands">
                                         @foreach ($brands as $key => $color)
                                             <option value="{{ $color->id }}">
                                                 {{ $color['name'] }}
@@ -113,12 +113,24 @@
                                     </select>
                                 </div>
                                 <div class="col-md-6">
+                                    <label class="title-color">{{ translate('city_Id') }}  <span class="text-danger">*</span></label>
+                                    <select class="js-select2-custom form-control  "
+                                        name="city_id"  required>
+                                        <option value="{{ null }}" selected disabled>
+                                            {{ translate('city_Id') }}</option>
+                                        @foreach ($city as $item)
+                                            <option value="{{ $item['id'] }}">{{ $item['name'] }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
                                     <label for="choice_attributes" class="title-color">
                                         {{ translate('star') }} :
                                     </label>
-                                    <select class="js-example-basic-multiple js-states js-example-responsive form-control"  name="star" id="choice_attributes"  >
-                                            <option value="0">غير معتمد </option>
-                                            <option value="1"> معتمد</option>
+                                    <select class="js-example-basic-multiple js-states js-example-responsive form-control"
+                                        name="star" id="choice_attributes">
+                                        <option value="0">غير معتمد </option>
+                                        <option value="1"> معتمد</option>
                                     </select>
                                 </div>
 

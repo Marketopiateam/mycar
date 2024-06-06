@@ -1,6 +1,6 @@
 @extends('layouts.back-end.app')
 
-@section('title', translate('motor_Update'))
+@section('title', translate('service_Update'))
 
 @section('content')
     <div class="content container-fluid">
@@ -8,7 +8,7 @@
         <div class="d-flex flex-wrap gap-2 align-items-center mb-3">
             <h2 class="h1 mb-0 align-items-center d-flex gap-2">
                 <img width="20" src="{{ dynamicAsset(path: 'public/assets/back-end/img/brand.png') }}" alt="">
-                {{ translate('motor_Update') }}
+                {{ translate('service_Update') }}
             </h2>
         </div>
 
@@ -16,7 +16,8 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body text-start">
-                        <form action="{{ route('admin.service-car.update', $model) }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('admin.service-car.update', $model) }}" method="post"
+                            enctype="multipart/form-data">
                             @csrf
                             @method('PATCH')
                             <div class="row">
@@ -35,7 +36,6 @@
                                                 </span>
                                             </div>
                                         </div>
-
                                         <div>
                                             <div class="custom_upload_input">
                                                 <input type="file" name="image"
@@ -43,33 +43,42 @@
                                                     id="" data-imgpreview="pre_img_viewer"
                                                     accept=".jpg, .webp, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*">
 
-                                                <span
-                                                    class="delete_file_input btn btn-outline-danger btn-sm square-btn d--none">
-                                                    <i class="tio-delete"></i>
-                                                </span>
+                                                @if (File::exists(base_path('storage/app/public/service_car/image/' . $model->image)))
+                                                    <span
+                                                        class="delete_file_input btn btn-outline-danger btn-sm square-btn d-flex">
+                                                        <i class="tio-delete"></i>
+                                                    </span>
+                                                @else
+                                                    <span
+                                                        class="delete_file_input btn btn-outline-danger btn-sm square-btn d--none">
+                                                        <i class="tio-delete"></i>
+                                                    </span>
+                                                @endif
 
                                                 <div class="img_area_with_preview position-absolute z-index-2">
-                                                    <img id="pre_img_viewer" class="h-auto aspect-1 bg-white d-none"
-                                                        src="dummy" alt="">
+                                                    <img id="pre_img_viewer"
+                                                        class="h-auto aspect-1 bg-white onerror-add-class-d-none"
+                                                        alt=""
+                                                        src="{{ getValidImage(path: 'storage/app/public/service_car/image/' . $model->image, type: 'backend-product') }}">
                                                 </div>
                                                 <div
                                                     class="position-absolute h-100 top-0 w-100 d-flex align-content-center justify-content-center">
                                                     <div
                                                         class="d-flex flex-column justify-content-center align-items-center">
-                                                        <img alt="" class="w-75"
-                                                            src="{{ dynamicAsset(path: 'public/assets/back-end/img/icons/product-upload-icon.svg') }}">
+                                                        <img alt=""
+                                                            src="{{ dynamicAsset(path: 'public/assets/back-end/img/icons/product-upload-icon.svg') }}"
+                                                            class="w-75">
                                                         <h3 class="text-muted">{{ translate('Upload_Image') }}</h3>
                                                     </div>
                                                 </div>
                                             </div>
 
-                                            <p class="text-muted mt-2">
-                                                {{ translate('image_format') }} : {{ 'Jpg, png, jpeg, webp,' }}
-                                                <br>
+                                            <p class="text-muted mt-2">{{ translate('image_format') }} :
+                                                {{ 'Jpg, png, jpeg, webp ' }}<br>
                                                 {{ translate('image_size') }} : {{ translate('max') }}
-                                                {{ '2 MB' }}
-                                            </p>
+                                                {{ '2 MB' }}</p>
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -81,7 +90,7 @@
                                             <span class="text-danger">*</span>
                                         </label>
                                         <input type="text" name="name" class="form-control" id="name"
-                                            value="{{  $model->name }}">
+                                            value="{{ $model->name }}">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -91,7 +100,7 @@
                                             <span class="text-danger">*</span>
                                         </label>
                                         <input type="text" name="address" class="form-control" id="address"
-                                            value="{{  $model->address }}">
+                                            value="{{ $model->address }}">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -101,11 +110,25 @@
                                     </label>
                                     <select
                                         class="js-example-basic-multiple js-states js-example-responsive form-control color-var-select"
-                                        name="brands[]" multiple="multiple" id="brands" >
+                                        name="brands[]" multiple="multiple" id="brands">
                                         @foreach ($brands as $key => $brand)
-                                        <option value="{{ $brand->id }}" {{ in_array($brand->id, $model->brands) ? 'selected' : '' }}>
-                                            {{ $brand->name }}
-                                        </option>
+                                            <option value="{{ $brand->id }}"
+                                                {{$model->brands!=null ? (in_array($brand->id, $model->brands) ? 'selected' : '')  :''}}>
+                                                {{ $brand->name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="title-color">{{ translate('city_Id') }} <span
+                                            class="text-danger">*</span></label>
+                                    <select class="js-select2-custom form-control  " name="city_id" required>
+                                        <option value="{{ null }}" selected disabled>
+                                            {{ translate('city_Id') }}</option>
+                                        @foreach ($city as $item)
+                                            <option value="{{ $item['id'] }}"
+                                                {{ $item['id'] == $model->city_id ? 'selected' : '' }}>{{ $item['name'] }}
+                                            </option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -113,9 +136,10 @@
                                     <label for="choice_attributes" class="title-color">
                                         {{ translate('star') }} :
                                     </label>
-                                    <select class="js-example-basic-multiple js-states js-example-responsive form-control"  name="star" id="choice_attributes"  >
-                                            <option value="0">غير معتمد </option>
-                                            <option value="1" {{  $model->star == 1 ?'selected':'' }}> معتمد</option>
+                                    <select class="js-example-basic-multiple js-states js-example-responsive form-control"
+                                        name="star" id="choice_attributes">
+                                        <option value="0">غير معتمد </option>
+                                        <option value="1" {{ $model->star == 1 ? 'selected' : '' }}> معتمد</option>
                                     </select>
                                 </div>
 
@@ -124,7 +148,7 @@
 
                             <div class="d-flex gap-3 justify-content-end">
                                 <button type="reset" id="reset"
-                                        class="btn btn-secondary px-4">{{ translate('reset') }}</button>
+                                    class="btn btn-secondary px-4">{{ translate('reset') }}</button>
                                 <button type="submit" class="btn btn--primary px-4">{{ translate('submit') }}</button>
                             </div>
                         </form>
