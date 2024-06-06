@@ -31,7 +31,8 @@ class ServiceController extends Controller
 {
     public function index(Request $request)
     {
-        $services = new Services();
+
+        $services = Services::query();
         if ($request->searchValue != "") {
             $services = $services->where('name', 'LIKE', "%".$request->searchValue."%");
         }
