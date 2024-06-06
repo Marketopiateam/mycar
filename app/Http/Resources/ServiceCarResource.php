@@ -30,6 +30,7 @@ class ServiceCarResource extends JsonResource
             'name'  => $this->name,
             'image'     => $this->image,
             'address'   => $this->address,
+            'phone'   => $this->phone,
             'brands'    => $brands,
             'city'    => $this->city != null ? $this->city->name : '',
             'star'  => $this->star,
