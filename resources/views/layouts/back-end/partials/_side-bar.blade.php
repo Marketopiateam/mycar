@@ -374,6 +374,31 @@
                                 </li>
                             </ul>
                         </li>
+                        <li class="navbar-vertical-aside-has-menu {{ Request::is('admin/services*') ? 'active' : '' }}">
+                            <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle" href="javascript:"
+                                title="{{ translate('serviescar') }}">
+                                <i class="tio-star nav-icon"></i>
+                                <span
+                                    class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">{{ translate('serviescar') }}</span>
+                            </a>
+                            <ul class="js-navbar-vertical-aside-submenu nav nav-sub"
+                                style="display: {{ Request::is('admin/services*') ? 'block' : 'none' }}">
+                                <li class="nav-item {{ Request::is('admin/services/create') ? 'active' : '' }}"
+                                    title="{{ translate('servies_new') }}">
+                                    <a class="nav-link " href="{{ route('admin.services.create') }}">
+                                        <span class="tio-circle nav-indicator-icon"></span>
+                                        <span class="text-truncate">{{ translate('servies_new') }}</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item {{ Request::is('admin/services') ? 'active' : '' }}"
+                                    title="{{ translate('servies_list') }}">
+                                    <a class="nav-link " href="{{ route('admin.services.index') }}">
+                                        <span class="tio-circle nav-indicator-icon"></span>
+                                        <span class="text-truncate">{{ translate('servies_list') }}</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
                         <li class="navbar-vertical-aside-has-menu {{ Request::is('admin/service-car*') ? 'active' : '' }}">
                             <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle" href="javascript:"
                                 title="{{ translate('serviescar') }}">
