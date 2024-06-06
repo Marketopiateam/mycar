@@ -40,7 +40,7 @@ class BookingServiceController extends Controller
         return view('admin-views.booking_service.list', compact('booking_service'));
     }
     public function edit(BookingService $BookingService)
-    {  
+    {
         return view('admin-views.booking_service.edit', compact('BookingService'));
     }
 
@@ -49,7 +49,7 @@ class BookingServiceController extends Controller
         $services = BookingService::find($id);
         $services->delete();
         Toastr::success(translate('booking_service_deleted_successfully'));
-        return redirect()->route('admin.booking_service.index');
+        return redirect()->route('admin.booking-service.index');
     }
-    
+
 }
