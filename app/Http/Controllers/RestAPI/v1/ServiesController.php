@@ -23,7 +23,7 @@ class ServiesController extends Controller
 
         try {
             $servies =  Services::skip(1)->get();
-
+            dd($services);
         } catch (\Exception $e) {
             return response()->json(['errors' => $e], 403);
         }
