@@ -45,6 +45,7 @@ class ServiceCarController extends Controller
         $data['name'] = $request['name'] ?? '';
         $data['address'] = $request['address'] ?? '';
         $data['brands'] = $request['brands'] ?? null;
+        $data['phone'] = $request['phone'] ?? null;
         $data['star'] = $request['star'] ?? '';
         $data['image'] =  $this->upload(dir: 'service_car/image/', format: 'png', image: $request['image']);
 
@@ -58,13 +59,14 @@ class ServiceCarController extends Controller
         $data['city_id'] = $request['city_id'] ?? '';
         $data['name'] = $request['name'] ?? '';
         $data['address'] = $request['address'] ?? '';
+        $data['phone'] = $request['phone'] ?? null;
         $data['brands'] = $request['brands'] ?? null;
         $data['star'] = $request['star'] ?? '';
         if ($request->has('image')) {
 
             $data['image'] =  $this->upload(dir: 'service_car/image/', format: 'png', image: $request['image']);
         }
- 
+
         $model = ServiceCar::find($model)->update($data);
 
         Toastr::success(translate('servicecar_updated_successfully'));

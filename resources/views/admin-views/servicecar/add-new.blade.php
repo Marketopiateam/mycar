@@ -98,6 +98,16 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="phone" class="title-color">
+                                            {{ translate('phone') }}
+                                            <span class="text-danger">*</span>
+                                        </label>
+                                        <input type="text" name="phone" class="form-control" id="phone"
+                                            value="{{ old('phone') }}">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
                                     <label for="name" class="title-color">
                                         {{ translate('brands') }}
                                         <span class="text-danger">*</span>
