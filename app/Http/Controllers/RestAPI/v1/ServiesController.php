@@ -23,33 +23,33 @@ class ServiesController extends Controller
 
         try {
             $servies = Services::get()->skip(1);
-
-
         } catch (\Exception $e) {
             return response()->json(['errors' => $e], 403);
         }
 
-        return response()->json($servies,200);
+        return response()->json($servies, 200);
     }
 
 
     public function booking_servies(Request $request)
     {
 
-        $data=[];
+        $data = [];
 
-            $data['service_id']=$request->service_id;
-            $data['name']= $request->name ;
-            $data['body']=$request->body;
-            $data['phone']= $request->phone;
+        $data['service_id'] = $request->service_id;
+        $data['name'] = $request->name;
+        $data['body'] = $request->body;
+        $data['phone'] = $request->phone;
+        if ($request->has('product_id')) {
+            $data['product_id'] = $request->product_id;
+        }
 
         try {
             $booking_servies =  BookingService::create($data);
-
         } catch (\Exception $e) {
             return response()->json(['errors' => $e], 403);
         }
 
-        return response()->json(['msg'=>'Success'],200);
+        return response()->json(['msg' => 'Success'], 200);
     }
 }
