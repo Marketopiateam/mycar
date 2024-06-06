@@ -379,7 +379,7 @@
                                 title="{{ translate('servies') }}">
                                 <i class="tio-star nav-icon"></i>
                                 <span
-                                    class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">{{ translate('serviescar') }}</span>
+                                    class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">{{ translate('servies') }}</span>
                             </a>
                             <ul class="js-navbar-vertical-aside-submenu nav nav-sub"
                                 style="display: {{ Request::is('admin/services*') ? 'block' : 'none' }}">
@@ -412,14 +412,14 @@
                                     title="{{ translate('servies_car_new') }}">
                                     <a class="nav-link " href="{{ route('admin.service-car.create') }}">
                                         <span class="tio-circle nav-indicator-icon"></span>
-                                        <span class="text-truncate">{{ translate('servies_new') }}</span>
+                                        <span class="text-truncate">{{ translate('servies_car_new') }}</span>
                                     </a>
                                 </li>
                                 <li class="nav-item {{ Request::is('admin/service-car') ? 'active' : '' }}"
                                     title="{{ translate('servies_car_list') }}">
                                     <a class="nav-link " href="{{ route('admin.service-car.index') }}">
                                         <span class="tio-circle nav-indicator-icon"></span>
-                                        <span class="text-truncate">{{ translate('servies_list') }}</span>
+                                        <span class="text-truncate">{{ translate('servies_car_list') }}</span>
                                     </a>
                                 </li>
                             </ul>
