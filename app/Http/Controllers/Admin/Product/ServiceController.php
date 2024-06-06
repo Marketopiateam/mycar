@@ -35,16 +35,16 @@ class ServiceController extends Controller
         if ($request->searchValue != "") {
             $services = $services->where('name', 'LIKE', "%".$request->searchValue."%");
         }
-        $services = $services->paginate(20);
+        $services = $services->skip(1)->paginate(20);
 
         return view('admin-views.services.list', compact('services'));
     }
     public function create(motorcar $model)
-    {  
+    {
         return view('admin-views.services.add-new');
     }
     public function store(Request $request)
-    {  
+    {
         Services::create($request->all());
         Toastr::success(translate('service_created_successfully'));
         return redirect()->route('admin.services.index');
@@ -56,7 +56,7 @@ class ServiceController extends Controller
         return redirect()->route('admin.services.index');
     }
     public function edit(Services $service)
-    {  
+    {
         return view('admin-views.services.edit', compact('service'));
     }
     public function destroy($id): RedirectResponse
@@ -66,5 +66,5 @@ class ServiceController extends Controller
         Toastr::success(translate('service_deleted_successfully'));
         return redirect()->route('admin.services.index');
     }
-    
+
 }
