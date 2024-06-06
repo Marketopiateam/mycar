@@ -22,8 +22,9 @@ class ServiesController extends Controller
     {
 
         try {
-            $servies =  Services::skip(1)->get();
-            dd($services);
+            $servies = Services::skip(1)->toSql();
+
+            dd($servies);
         } catch (\Exception $e) {
             return response()->json(['errors' => $e], 403);
         }
