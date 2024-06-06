@@ -36,7 +36,7 @@ class ServiceController extends Controller
         if ($request->searchValue != "") {
             $services = $services->where('name', 'LIKE', "%".$request->searchValue."%");
         }
-        $services = $services->skip(1)->paginate(20);
+            $services = $services->skip(1)->paginate(20);
 
         return view('admin-views.services.list', compact('services'));
     }
