@@ -110,7 +110,7 @@
                                             <span class="text-danger">*</span>
                                         </label>
                                         <input type="text" name="phone" class="form-control" id="phone"
-                                            value="{{ old('phone') }}">
+                                            value="{{ $model->phone }}">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
