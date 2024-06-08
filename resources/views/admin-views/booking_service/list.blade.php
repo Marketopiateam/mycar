@@ -42,7 +42,6 @@
                                     <th class="text-center"> {{ translate('product') }}</th>
                                     <th class="text-center"> {{ translate('body') }}</th>
                                     <th class="text-center"> {{ translate('action') }}</th>
-
                                 </tr>
                                 </thead>
                                 <tbody>

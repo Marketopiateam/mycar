@@ -18,6 +18,9 @@
                     <div class="card-body text-start">
                         {{ $BookingService->body }}
                     </div>
+                    <div class="card-body text-start">
+                        {{ $BookingService->product->name ??'' }}
+                    </div>
                 </div>
             </div>
         </div>
