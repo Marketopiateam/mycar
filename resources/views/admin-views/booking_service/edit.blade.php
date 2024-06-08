@@ -16,6 +16,12 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body text-start">
+                        {{ $BookingService->name }}
+                    </div>
+                    <div class="card-body text-start">
+                        {{ $BookingService->phone }}
+                    </div>
+                    <div class="card-body text-start">
                         {{ $BookingService->body }}
                     </div>
                     <div class="card-body text-start">
