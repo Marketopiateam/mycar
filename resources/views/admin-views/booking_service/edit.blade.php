@@ -24,7 +24,7 @@
                     <div class="card-body text-start">
                         <h4>body :</h4> {{ $BookingService->body }}
                     </div>
-                    @if ($BookingService->product->name != null)
+                    @if ($BookingService->product_id != null)
                         <div class="card-body text-start">
                             <h4>product :</h4> {{ $BookingService->product->name ?? '' }}
                         </div>
