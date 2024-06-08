@@ -16,17 +16,20 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body text-start">
-                        {{ $BookingService->name }}
+                        <h4>name :</h4> {{ $BookingService->name }}
                     </div>
                     <div class="card-body text-start">
-                        {{ $BookingService->phone }}
+                        <h4>phone :</h4> {{ $BookingService->phone }}
                     </div>
                     <div class="card-body text-start">
-                        {{ $BookingService->body }}
+                        <h4>body :</h4> {{ $BookingService->body }}
                     </div>
-                    <div class="card-body text-start">
-                        {{ $BookingService->product->name ??'' }}
-                    </div>
+                    @if ($BookingService->product->name != null)
+                        <div class="card-body text-start">
+                            <h4>product :</h4> {{ $BookingService->product->name ?? '' }}
+                        </div>
+                    @endif
+
                 </div>
             </div>
         </div>
