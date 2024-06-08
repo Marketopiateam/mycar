@@ -7897,4 +7897,7 @@
   'servicecar_created_successfully' => 'Servicecar created successfully',
   'service_Update' => 'Service Update',
   'servicecar_updated_successfully' => 'Servicecar updated successfully',
+  'servies' => 'Servies',
+  'servies_car_new' => 'Servies car new',
+  'servies_car_list' => 'Servies car list',
 );

@@ -39,9 +39,10 @@
                                     <th class="text-center">{{ translate('name') }}</th>
                                     <th class="text-center"> {{ translate('phone') }}</th>
                                     <th class="text-center"> {{ translate('service') }}</th>
+                                    <th class="text-center"> {{ translate('product') }}</th>
                                     <th class="text-center"> {{ translate('body') }}</th>
                                     <th class="text-center"> {{ translate('action') }}</th>
-                                    
+
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -52,15 +53,16 @@
                                             <span data-toggle="tooltip" data-placement="right" title="{{$model->name}}">
                                                  {{ Str::limit($model->name,20) }}
                                             </span>
-                                        </td>  
-                                        <td class="overflow-hidden text-center">{{$model->phone}}</td>  
-                                        <td class="overflow-hidden text-center">{{$model->service->name}}</td>  
+                                        </td>
+                                        <td class="overflow-hidden text-center">{{$model->phone}}</td>
+                                        <td class="overflow-hidden text-center">{{$model->service->name}}</td>
+                                        <td class="overflow-hidden text-center">{{$model->product->name??''}}</td>
 
                                         <td class="overflow-hidden text-center">
                                             <span data-toggle="tooltip" data-placement="right" title="{{$model->body}}">
                                                  {{ Str::limit($model->body,20) }}
                                             </span>
-                                        </td>   
+                                        </td>
                                         <td>
                                             <div class="d-flex justify-content-center gap-2">
                                                 <a class="btn btn-outline-info btn-sm square-btn" title="{{ translate('edit') }}"
@@ -97,7 +99,7 @@
             </div>
         </div>
     </div>
-   
+
 @endsection
 
 @push('script')

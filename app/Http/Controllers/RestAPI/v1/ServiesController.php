@@ -17,7 +17,6 @@ use App\Models\Services;
 
 class ServiesController extends Controller
 {
-
     public function get_servies(Request $request)
     {
 
@@ -29,7 +28,6 @@ class ServiesController extends Controller
 
         return response()->json($servies, 200);
     }
-
 
     public function booking_servies(Request $request)
     {
